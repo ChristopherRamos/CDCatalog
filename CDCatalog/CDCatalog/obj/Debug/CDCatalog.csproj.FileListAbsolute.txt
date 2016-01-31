@@ -1,0 +1,13 @@
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\bin\Debug\CDCatalog.exe.config
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\obj\Debug\CDCatalog.csprojResolveAssemblyReference.cache
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Form1.resources
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Properties.Resources.resources
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\obj\Debug\CDCatalog.csproj.GenerateResource.Cache
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\bin\Debug\CDCatalog.exe
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\bin\Debug\CDCatalog.pdb
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\bin\Debug\EntityFramework.dll
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\bin\Debug\EntityFramework.xml
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\obj\Debug\CDCatalog.exe
+c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\obj\Debug\CDCatalog.pdb
