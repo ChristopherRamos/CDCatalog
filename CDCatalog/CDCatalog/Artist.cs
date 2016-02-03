@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CDCatalog
 {
-    class Artist
+    public class Artist
     {
-        string name;
+        public int ID { get; set; }
+        public string name { get; set; }  
     }
 }

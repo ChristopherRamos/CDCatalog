@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace CDCatalog
 {
-    class Song
+    public class Song
     {
-        string title;
-        string artist;
-        string album;
-        int trackNumber;
-        string genre;
-        int trackLength;
-        double rating;
+        public int Id { get; set; }
+        public int artistId { get; set; }
+        public int albumId { get; set; }
+        public string title { get; set; }
+        public int trackNumber { get; set; }
+        public string genre { get; set; }
+        public int trackLength { get; set; }
+        public double rating { get; set; }  
     }
 }
