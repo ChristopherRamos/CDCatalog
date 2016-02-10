@@ -51,18 +51,17 @@ namespace CDCatalog
                 var artistid = context.Artists
                     .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
 
-             //if(artists != null)
-             //{
-             //   return artist.
-             //}
+                if (artistid != null)
+                {
+                    return artistid.FirstOrDefault().ID;
+                }
+                else
+                { 
+                // insert new artist into database and return id
+                    return artistid.FirstOrDefault().ID;
+                }
 
-
-                return artistid.FirstOrDefault().ID;
-
-                
             }
-
-            //if not add artist and get id
         }
 
 

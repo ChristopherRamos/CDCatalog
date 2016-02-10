@@ -29,3 +29,4 @@ C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatal
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.exe
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.pdb
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.newchanges.resources
+C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Form1.resources
