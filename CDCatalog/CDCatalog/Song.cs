@@ -9,12 +9,11 @@ namespace CDCatalog
     public class Song
     {
         public int Id { get; set; }
-        public int artistId { get; set; }
-        public int albumId { get; set; }
-        public string title { get; set; }
-        public int trackNumber { get; set; }
-        public string genre { get; set; }
-        public int trackLength { get; set; }
-        public double rating { get; set; }  
+        public int ArtistId { get; set; }
+        public string Title { get; set; }
+        public int TrackNumber { get; set; }
+        public string Genre { get; set; }
+        public int TrackLength { get; set; }
+        public double Rating { get; set; }  
     }
 }

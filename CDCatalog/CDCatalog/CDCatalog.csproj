@@ -62,11 +62,51 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602030015442_InitialCreate.cs" />
+    <Compile Include="Migrations\201602030015442_InitialCreate.Designer.cs">
+      <DependentUpon>201602030015442_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602082202246_cramos.cs" />
+    <Compile Include="Migrations\201602082202246_cramos.Designer.cs">
+      <DependentUpon>201602082202246_cramos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602082343233_verbose.cs" />
+    <Compile Include="Migrations\201602082343233_verbose.Designer.cs">
+      <DependentUpon>201602082343233_verbose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602082352193_verbose1.cs" />
+    <Compile Include="Migrations\201602082352193_verbose1.Designer.cs">
+      <DependentUpon>201602082352193_verbose1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602092341573_Chris Ramos.cs" />
+    <Compile Include="Migrations\201602092341573_Chris Ramos.Designer.cs">
+      <DependentUpon>201602092341573_Chris Ramos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602102244030_new changes.cs" />
+    <Compile Include="Migrations\201602102244030_new changes.Designer.cs">
+      <DependentUpon>201602102244030_new changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Song.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602030015442_InitialCreate.resx">
+      <DependentUpon>201602030015442_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602082202246_cramos.resx">
+      <DependentUpon>201602082202246_cramos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602082343233_verbose.resx">
+      <DependentUpon>201602082343233_verbose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602082352193_verbose1.resx">
+      <DependentUpon>201602082352193_verbose1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602092341573_Chris Ramos.resx">
+      <DependentUpon>201602092341573_Chris Ramos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602102244030_new changes.resx">
+      <DependentUpon>201602102244030_new changes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

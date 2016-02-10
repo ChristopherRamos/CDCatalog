@@ -26,8 +26,8 @@ namespace CDCatalog
         {
 
             var song = new Song
-            {
-                ArtistId = GetArtistId(textBoxAddSongArtist.Text),
+            {                
+                ArtistId = 2,
                 Title = textBoxAddSongTitle.Text,
                 TrackNumber = Convert.ToInt32(numericUpDownAddSongTrackNumber.Value),
                 Genre = comboBoxAddSongGenre.Text,
@@ -43,28 +43,11 @@ namespace CDCatalog
             }
         }
 
-        private int GetArtistId(string p)
-        {
-            //check to see if Artist already in database
-            using (var context = new CDCatalogContext())
-            {
-                var artistid = context.Artists
-                    .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
-
-             //if(artists != null)
-             //{
-             //   return artist.
-             //}
-
-
-                return artistid.FirstOrDefault().ID;
-
-                
-            }
-
-            //if not add artist and get id
+        private void processArtist(string name)
+        { 
+            
+        
         }
-
 
     }
 }

@@ -13,5 +13,6 @@ namespace CDCatalog
         public int Year { get; set; }
         public double Rating { get; set; }
         public int ArtistId { get; set; }
+        public string Artist { get; set; }
     }
 }
