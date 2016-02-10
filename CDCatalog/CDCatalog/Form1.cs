@@ -51,19 +51,37 @@ namespace CDCatalog
                 var artistid = context.Artists
                     .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
 
-                if (artistid != null)
+                if (!artistid.Any())
                 {
                     return artistid.FirstOrDefault().ID;
                 }
                 else
                 { 
                 // insert new artist into database and return id
-                    return artistid.FirstOrDefault().ID;
+                    InsertNewArtist(p);
+
+                    var artistid2 = context.Artists
+                    .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
+
+                    return artistid2.FirstOrDefault().ID;
                 }
 
             }
         }
 
+        private static void InsertNewArtist(string p)
+        {
+               var artist = new Artist
+               {
+                  Name = p
+               };
+
+                using(var context = new CDCatalogContext())
+                {
+                    context.Artists.Add(artist);
+                    context.SaveChanges();
+                }
+        }
 
     }
 }
