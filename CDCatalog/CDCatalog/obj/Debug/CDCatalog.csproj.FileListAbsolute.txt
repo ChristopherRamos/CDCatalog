@@ -11,22 +11,23 @@ c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\bin\De
 c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\bin\Debug\EntityFramework.SqlServer.xml
 c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\obj\Debug\CDCatalog.exe
 c:\users\cramos\documents\visual studio 2013\Projects\CDCatalog\CDCatalog\obj\Debug\CDCatalog.pdb
-C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.csprojResolveAssemblyReference.cache
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\bin\Debug\CDCatalog.exe.config
+C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.csprojResolveAssemblyReference.cache
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\bin\Debug\CDCatalog.exe
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\bin\Debug\CDCatalog.pdb
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\bin\Debug\EntityFramework.dll
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\bin\Debug\EntityFramework.xml
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Form1.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.InitialCreate.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.cramos.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.verbose.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.verbose1.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.ChrisRamos.resources
+C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.newchanges.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Properties.Resources.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.csproj.GenerateResource.Cache
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.exe
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.pdb
-C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.newchanges.resources
-C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Form1.resources
+C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.ChrisR.resources
