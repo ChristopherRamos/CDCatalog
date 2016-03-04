@@ -31,3 +31,5 @@ C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatal
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.exe
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.pdb
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.ChrisR.resources
+C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.ChrisRamos2.resources
+C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.Migrations.ChrisRamos3.resources

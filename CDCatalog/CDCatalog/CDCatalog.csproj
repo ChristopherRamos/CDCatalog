@@ -62,6 +62,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Genre.cs" />
     <Compile Include="Migrations\201602030015442_InitialCreate.cs" />
     <Compile Include="Migrations\201602030015442_InitialCreate.Designer.cs">
       <DependentUpon>201602030015442_InitialCreate.cs</DependentUpon>
@@ -90,6 +91,14 @@
     <Compile Include="Migrations\201602170013382_ChrisR.Designer.cs">
       <DependentUpon>201602170013382_ChrisR.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603041935505_ChrisRamos2.cs" />
+    <Compile Include="Migrations\201603041935505_ChrisRamos2.Designer.cs">
+      <DependentUpon>201603041935505_ChrisRamos2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603041939332_ChrisRamos3.cs" />
+    <Compile Include="Migrations\201603041939332_ChrisRamos3.Designer.cs">
+      <DependentUpon>201603041939332_ChrisRamos3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,6 +126,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602170013382_ChrisR.resx">
       <DependentUpon>201602170013382_ChrisR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603041935505_ChrisRamos2.resx">
+      <DependentUpon>201603041935505_ChrisRamos2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603041939332_ChrisRamos3.resx">
+      <DependentUpon>201603041939332_ChrisRamos3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

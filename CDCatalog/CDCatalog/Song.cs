@@ -13,7 +13,7 @@ namespace CDCatalog
         public int AlbumId { get; set; }
         public string Title { get; set; }
         public int TrackNumber { get; set; }
-        public string Genre { get; set; }
+        public int GenreID { get; set; }
         public int TrackLength { get; set; }
         public double Rating { get; set; }  
     }

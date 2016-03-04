@@ -20,6 +20,11 @@ namespace CDCatalog
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            //using (CDCatalogContext db = new CDCatalogContext())
+
+            //List<Genre> genreList = db.Genres.Include("Genres").ToList();
+
+
         }
 
         private void btnAddSong_Click(object sender, EventArgs e)
@@ -30,7 +35,7 @@ namespace CDCatalog
                 ArtistId = GetArtistId(textBoxAddSongArtist.Text),
                 Title = textBoxAddSongTitle.Text,
                 TrackNumber = Convert.ToInt32(numericUpDownAddSongTrackNumber.Value),
-                Genre = comboBoxAddSongGenre.Text,
+                //Genre = comboBoxAddSongGenre.Text,
                 TrackLength = Convert.ToInt32(numericUpDownAddSongTrackLength.Value),
                 Rating = Convert.ToInt32(numericUpDownAddSongRating.Value)
             };
@@ -71,6 +76,34 @@ namespace CDCatalog
             }
         }
 
+        private int GetGenreId(string p)
+        {
+            using (var context = new CDCatalogContext())
+            {
+
+                var genreID = context.Genres
+                    .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
+
+                //First check to see if Genre already in database
+
+                if (genreID.Any())
+                {
+                    return genreID.FirstOrDefault().ID;
+                }
+                else
+                {
+                    // Genre is not in the database, Insert new genre and return ID
+                    InsertNewGenre(p);
+
+                    var genreID2 = context.Genres
+                    .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
+
+                    return genreID2.FirstOrDefault().ID;
+                }
+
+            }
+        }
+
         private static void InsertNewArtist(string p)
         {
                var artist = new Artist
@@ -83,6 +116,20 @@ namespace CDCatalog
                     context.Artists.Add(artist);
                     context.SaveChanges();
                 }
+        }
+
+        private static void InsertNewGenre(string p)
+        {
+            var genre = new Genre
+            {
+                Name = p
+            };
+
+            using (var context = new CDCatalogContext())
+            {
+                context.Genres.Add(genre);
+                context.SaveChanges();
+            }
         }
 
         private void btnAddCD_Click(object sender, EventArgs e)
@@ -103,6 +150,16 @@ namespace CDCatalog
                 context.SaveChanges();
             }
 
+        }
+
+        private void btnAddArtist_Click(object sender, EventArgs e)
+        {
+            GetArtistId(textBoxAddArtist.Text);
+        }
+
+        private void buttonAddGenre_Click(object sender, EventArgs e)
+        {
+            GetGenreId(textBoxAddGenre.Text);
         }
 
     }

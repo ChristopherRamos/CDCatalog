@@ -76,6 +76,10 @@
             this.numericUpDownAddSongTrackNumber = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownAddCDYear = new System.Windows.Forms.NumericUpDown();
             this.labelAddCDYear = new System.Windows.Forms.Label();
+            this.btnAddArtist = new System.Windows.Forms.Button();
+            this.textBoxAddArtist = new System.Windows.Forms.TextBox();
+            this.textBoxAddGenre = new System.Windows.Forms.TextBox();
+            this.buttonAddGenre = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongRating)).BeginInit();
@@ -584,11 +588,49 @@
             this.labelAddCDYear.TabIndex = 54;
             this.labelAddCDYear.Text = "Year";
             // 
+            // btnAddArtist
+            // 
+            this.btnAddArtist.Location = new System.Drawing.Point(762, 85);
+            this.btnAddArtist.Name = "btnAddArtist";
+            this.btnAddArtist.Size = new System.Drawing.Size(75, 23);
+            this.btnAddArtist.TabIndex = 55;
+            this.btnAddArtist.Text = "Add Artist";
+            this.btnAddArtist.UseVisualStyleBackColor = true;
+            this.btnAddArtist.Click += new System.EventHandler(this.btnAddArtist_Click);
+            // 
+            // textBoxAddArtist
+            // 
+            this.textBoxAddArtist.Location = new System.Drawing.Point(643, 87);
+            this.textBoxAddArtist.Name = "textBoxAddArtist";
+            this.textBoxAddArtist.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAddArtist.TabIndex = 56;
+            // 
+            // textBoxAddGenre
+            // 
+            this.textBoxAddGenre.Location = new System.Drawing.Point(643, 125);
+            this.textBoxAddGenre.Name = "textBoxAddGenre";
+            this.textBoxAddGenre.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAddGenre.TabIndex = 58;
+            // 
+            // buttonAddGenre
+            // 
+            this.buttonAddGenre.Location = new System.Drawing.Point(762, 123);
+            this.buttonAddGenre.Name = "buttonAddGenre";
+            this.buttonAddGenre.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddGenre.TabIndex = 57;
+            this.buttonAddGenre.Text = "Add Genre";
+            this.buttonAddGenre.UseVisualStyleBackColor = true;
+            this.buttonAddGenre.Click += new System.EventHandler(this.buttonAddGenre_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 612);
+            this.Controls.Add(this.textBoxAddGenre);
+            this.Controls.Add(this.buttonAddGenre);
+            this.Controls.Add(this.textBoxAddArtist);
+            this.Controls.Add(this.btnAddArtist);
             this.Controls.Add(this.labelAddCDYear);
             this.Controls.Add(this.numericUpDownAddCDYear);
             this.Controls.Add(this.numericUpDownAddSongTrackNumber);
@@ -703,6 +745,10 @@
         private System.Windows.Forms.NumericUpDown numericUpDownAddSongTrackNumber;
         private System.Windows.Forms.NumericUpDown numericUpDownAddCDYear;
         private System.Windows.Forms.Label labelAddCDYear;
+        private System.Windows.Forms.Button btnAddArtist;
+        private System.Windows.Forms.TextBox textBoxAddArtist;
+        private System.Windows.Forms.TextBox textBoxAddGenre;
+        private System.Windows.Forms.Button buttonAddGenre;
     }
 }
 
