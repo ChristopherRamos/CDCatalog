@@ -19,7 +19,52 @@ namespace CDCatalog
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            refreshComboBoxes();
+
+            using (var context = new CDCatalogContext())
+            {
+
+                var Genrelist = context.Genres.ToList();
+                var Songlist = context.Songs.ToList();
+                var CDlist = context.Albums.ToList();
+
+                var MergedSongCDlist = new List<CombinedSongsAlbums>();
+
+                foreach(var item in Songlist)
+                {
+                    MergedSongCDlist.Add(new CombinedSongsAlbums()
+                        {
+                            Title = "Song - " + item.Title,
+                            ID = item.Id,
+                            AssetType = "Song"
+                        });
+                
+                }
+
+                foreach (var item in CDlist)
+                {
+                    MergedSongCDlist.Add(new CombinedSongsAlbums()
+                    {
+                        Title = "CD - " + item.Title,
+                        ID = item.Id,
+                        AssetType = "Album"
+                    });
+                }
+
+                this.comboBoxAddSongAlbum.DataSource = CDlist;
+                this.comboBoxAddSongAlbum.DisplayMember = "Title"
+                this.comboBoxAddSongAlbum.ValueMember = "Id"
+
+                this.comboBoxAddSongGenre.DataSource = Genrelist;
+                this.comboBoxAddSongGenre.DisplayMember = "Name";
+                this.comboBoxAddSongGenre.ValueMember = "ID";
+
+
+
+                this.comboBoxRateSongorCD.DataSource = MergedSongCDlist;
+                this.comboBoxRateSongorCD.DisplayMember = "Title";
+                this.comboBoxRateSongorCD.ValueMember = "ID";
+            }
+
         }
 
         private void btnAddSong_Click(object sender, EventArgs e)
@@ -29,7 +74,6 @@ namespace CDCatalog
             {
                 ArtistId = GetArtistId(textBoxAddSongArtist.Text),
                 Title = textBoxAddSongTitle.Text,
-                AlbumId = Convert.ToInt32(comboBoxAddSongAlbum.SelectedValue),
                 TrackNumber = Convert.ToInt32(numericUpDownAddSongTrackNumber.Value),
                 GenreID = Convert.ToInt32(comboBoxAddSongGenre.SelectedValue),
                 TrackLength = Convert.ToInt32(numericUpDownAddSongTrackLength.Value),
@@ -166,7 +210,6 @@ namespace CDCatalog
                 context.Database.Log = Console.WriteLine;
                 context.Albums.Add(album);
                 context.SaveChanges();
-                refreshComboBoxes();
             }
 
         }
@@ -174,13 +217,11 @@ namespace CDCatalog
         private void btnAddArtist_Click(object sender, EventArgs e)
         {
             GetArtistId(textBoxAddArtist.Text);
-            refreshComboBoxes();
         }
 
         private void buttonAddGenre_Click(object sender, EventArgs e)
         {
             GetGenreId(textBoxAddGenre.Text);
-            refreshComboBoxes();
         }
 
         private void buttonRate_Click(object sender, EventArgs e)
@@ -188,51 +229,5 @@ namespace CDCatalog
             //InsertRating(d)
         }
 
-        private void refreshComboBoxes()
-        {
-            using (var context = new CDCatalogContext())
-            {
-
-                var Genrelist = context.Genres.OrderBy(g => g.Name).ToList();
-                var Songlist = context.Songs.OrderBy(s => s.Title).ToList();
-                var CDlist = context.Albums.OrderBy(c => c.Title).ToList();
-
-                var MergedSongCDlist = new List<CombinedSongsAlbums>();
-
-                foreach (var item in Songlist)
-                {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
-                    {
-                        Title = "Song - " + item.Title,
-                        ID = item.Id,
-                        AssetType = "Song"
-                    });
-
-                }
-
-                foreach (var item in CDlist)
-                {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
-                    {
-                        Title = "CD - " + item.Title,
-                        ID = item.Id,
-                        AssetType = "Album"
-                    });
-                }
-
-                this.comboBoxAddSongAlbum.DataSource = CDlist;
-                this.comboBoxAddSongAlbum.DisplayMember = "Title";
-                this.comboBoxAddSongAlbum.ValueMember = "Id";
-
-                this.comboBoxAddSongGenre.DataSource = Genrelist;
-                this.comboBoxAddSongGenre.DisplayMember = "Name";
-                this.comboBoxAddSongGenre.ValueMember = "ID";
-
-                this.comboBoxRateSongorCD.DataSource = MergedSongCDlist;
-                this.comboBoxRateSongorCD.DisplayMember = "Title";
-                this.comboBoxRateSongorCD.ValueMember = "ID";
-            }
-            
-        }
     }
 }
