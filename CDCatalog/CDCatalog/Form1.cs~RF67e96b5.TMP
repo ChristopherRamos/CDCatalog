@@ -33,7 +33,7 @@ namespace CDCatalog
                 {
                     MergedSongCDlist.Add(new CombinedSongsAlbums()
                         {
-                            Title = "Song - " + item.Title,
+                            Title = item.Title,
                             ID = item.Id,
                             AssetType = "Song"
                         });
@@ -44,19 +44,20 @@ namespace CDCatalog
                 {
                     MergedSongCDlist.Add(new CombinedSongsAlbums()
                     {
-                        Title = "CD - " + item.Title,
+                        Title = item.Title,
                         ID = item.Id,
-                        AssetType = "Album"
+                        AssetType = "Song"
                     });
+
                 }
 
                 this.comboBoxAddSongGenre.DataSource = Genrelist;
                 this.comboBoxAddSongGenre.DisplayMember = "Name";
                 this.comboBoxAddSongGenre.ValueMember = "ID";
 
-                this.comboBoxRateSongorCD.DataSource = MergedSongCDlist;
-                this.comboBoxRateSongorCD.DisplayMember = "Title";
-                this.comboBoxRateSongorCD.ValueMember = "ID";
+                //this.comboBoxRateSongorCD.DataSource = MeregedSongCDlist;
+                //this.comboBoxRateSongorCD.DisplayMember = "SongTitle";
+                //this.comboBoxRateSongorCD.ValueMember = "SongID";
             }
 
         }

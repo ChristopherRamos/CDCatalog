@@ -20,44 +20,20 @@ namespace CDCatalog
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            using (var context = new CDCatalogContext())
-            {
+            using (CDCatalogContext db = new CDCatalogContext())
 
-                var Genrelist = context.Genres.ToList();
-                var Songlist = context.Songs.ToList();
-                var CDlist = context.Albums.ToList();
+            { 
 
-                var MergedSongCDlist = new List<CombinedSongsAlbums>();
+            List<Genre> genreList = db.Genres.Include("Genres").ToList();
 
-                foreach(var item in Songlist)
+            foreach (Genre genre in genreList)
                 {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
-                        {
-                            Title = "Song - " + item.Title,
-                            ID = item.Id,
-                            AssetType = "Song"
-                        });
-                
+                    this.comboBoxAddSongGenre.DisplayMember = "GenreName";
+                    this.comboBoxAddSongGenre.ValueMember = "GenreID";
+                    this.comboBoxAddSongGenre.Items.Add(genre);
                 }
-
-                foreach (var item in CDlist)
-                {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
-                    {
-                        Title = "CD - " + item.Title,
-                        ID = item.Id,
-                        AssetType = "Album"
-                    });
-                }
-
-                this.comboBoxAddSongGenre.DataSource = Genrelist;
-                this.comboBoxAddSongGenre.DisplayMember = "Name";
-                this.comboBoxAddSongGenre.ValueMember = "ID";
-
-                this.comboBoxRateSongorCD.DataSource = MergedSongCDlist;
-                this.comboBoxRateSongorCD.DisplayMember = "Title";
-                this.comboBoxRateSongorCD.ValueMember = "ID";
             }
+
 
         }
 

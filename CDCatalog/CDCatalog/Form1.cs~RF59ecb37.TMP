@@ -24,39 +24,10 @@ namespace CDCatalog
             {
 
                 var Genrelist = context.Genres.ToList();
-                var Songlist = context.Songs.ToList();
-                var CDlist = context.Albums.ToList();
-
-                var MergedSongCDlist = new List<CombinedSongsAlbums>();
-
-                foreach(var item in Songlist)
-                {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
-                        {
-                            Title = "Song - " + item.Title,
-                            ID = item.Id,
-                            AssetType = "Song"
-                        });
-                
-                }
-
-                foreach (var item in CDlist)
-                {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
-                    {
-                        Title = "CD - " + item.Title,
-                        ID = item.Id,
-                        AssetType = "Album"
-                    });
-                }
-
                 this.comboBoxAddSongGenre.DataSource = Genrelist;
                 this.comboBoxAddSongGenre.DisplayMember = "Name";
                 this.comboBoxAddSongGenre.ValueMember = "ID";
 
-                this.comboBoxRateSongorCD.DataSource = MergedSongCDlist;
-                this.comboBoxRateSongorCD.DisplayMember = "Title";
-                this.comboBoxRateSongorCD.ValueMember = "ID";
             }
 
         }

@@ -45,7 +45,6 @@
             this.textBoxAddSongArtist = new System.Windows.Forms.TextBox();
             this.textBoxAddSongAlbum = new System.Windows.Forms.TextBox();
             this.comboBoxAddSongGenre = new System.Windows.Forms.ComboBox();
-            this.genreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.numericUpDownAddSongRating = new System.Windows.Forms.NumericUpDown();
@@ -78,15 +77,16 @@
             this.textBoxAddArtist = new System.Windows.Forms.TextBox();
             this.textBoxAddGenre = new System.Windows.Forms.TextBox();
             this.buttonAddGenre = new System.Windows.Forms.Button();
+            this.genreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.genreBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongTrackLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddCDRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongTrackNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddCDYear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.genreBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -231,6 +231,8 @@
             // 
             // comboBoxAddSongGenre
             // 
+            this.comboBoxAddSongGenre.DataSource = this.genreBindingSource;
+            this.comboBoxAddSongGenre.DisplayMember = "Name";
             this.comboBoxAddSongGenre.FormattingEnabled = true;
             this.comboBoxAddSongGenre.Location = new System.Drawing.Point(467, 22);
             this.comboBoxAddSongGenre.Name = "comboBoxAddSongGenre";
@@ -582,6 +584,11 @@
             this.buttonAddGenre.UseVisualStyleBackColor = true;
             this.buttonAddGenre.Click += new System.EventHandler(this.buttonAddGenre_Click);
             // 
+            // genreBindingSource
+            // 
+            this.genreBindingSource.DataSource = typeof(CDCatalog.Genre);
+            this.genreBindingSource.CurrentChanged += new System.EventHandler(this.genreBindingSource_CurrentChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,13 +647,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.genreBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongRating)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongTrackLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddCDRating)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongTrackNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddCDYear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.genreBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
