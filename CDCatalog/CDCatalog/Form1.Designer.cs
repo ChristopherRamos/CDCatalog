@@ -42,16 +42,14 @@
             this.btnAddCD = new System.Windows.Forms.Button();
             this.buttonRate = new System.Windows.Forms.Button();
             this.textBoxAddSongTitle = new System.Windows.Forms.TextBox();
-            this.textBoxAddSongArtist = new System.Windows.Forms.TextBox();
             this.comboBoxAddSongGenre = new System.Windows.Forms.ComboBox();
             this.genreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label11 = new System.Windows.Forms.Label();
             this.numericUpDownAddSongTrackLength = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxAddCDTitle = new System.Windows.Forms.TextBox();
-            this.textBoxAddCDArtist = new System.Windows.Forms.TextBox();
             this.comboBoxRateSongorCD = new System.Windows.Forms.ComboBox();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownRateSongCD = new System.Windows.Forms.NumericUpDown();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxFindKeywordSearch = new System.Windows.Forms.TextBox();
@@ -73,11 +71,15 @@
             this.buttonAddGenre = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxAddSongAlbum = new System.Windows.Forms.ComboBox();
+            this.comboBoxAddSongArtist = new System.Windows.Forms.ComboBox();
+            this.comboBoxAddCDArtist = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.genreBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongTrackLength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRateSongCD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongTrackNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddCDYear)).BeginInit();
             this.SuspendLayout();
@@ -171,7 +173,7 @@
             // 
             // btnAddSong
             // 
-            this.btnAddSong.Location = new System.Drawing.Point(896, 17);
+            this.btnAddSong.Location = new System.Drawing.Point(975, 23);
             this.btnAddSong.Name = "btnAddSong";
             this.btnAddSong.Size = new System.Drawing.Size(75, 23);
             this.btnAddSong.TabIndex = 9;
@@ -181,7 +183,7 @@
             // 
             // btnAddCD
             // 
-            this.btnAddCD.Location = new System.Drawing.Point(337, 96);
+            this.btnAddCD.Location = new System.Drawing.Point(428, 96);
             this.btnAddCD.Name = "btnAddCD";
             this.btnAddCD.Size = new System.Drawing.Size(75, 23);
             this.btnAddCD.TabIndex = 10;
@@ -207,19 +209,11 @@
             this.textBoxAddSongTitle.TabIndex = 14;
             this.textBoxAddSongTitle.Text = "Title";
             // 
-            // textBoxAddSongArtist
-            // 
-            this.textBoxAddSongArtist.Location = new System.Drawing.Point(99, 25);
-            this.textBoxAddSongArtist.Name = "textBoxAddSongArtist";
-            this.textBoxAddSongArtist.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAddSongArtist.TabIndex = 15;
-            this.textBoxAddSongArtist.Text = "Artist";
-            // 
             // comboBoxAddSongGenre
             // 
             this.comboBoxAddSongGenre.DisplayMember = "ID";
             this.comboBoxAddSongGenre.FormattingEnabled = true;
-            this.comboBoxAddSongGenre.Location = new System.Drawing.Point(435, 17);
+            this.comboBoxAddSongGenre.Location = new System.Drawing.Point(470, 19);
             this.comboBoxAddSongGenre.Name = "comboBoxAddSongGenre";
             this.comboBoxAddSongGenre.Size = new System.Drawing.Size(121, 21);
             this.comboBoxAddSongGenre.TabIndex = 18;
@@ -228,7 +222,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(843, 24);
+            this.label11.Location = new System.Drawing.Point(893, 27);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(47, 13);
             this.label11.TabIndex = 25;
@@ -236,7 +230,7 @@
             // 
             // numericUpDownAddSongTrackLength
             // 
-            this.numericUpDownAddSongTrackLength.Location = new System.Drawing.Point(781, 22);
+            this.numericUpDownAddSongTrackLength.Location = new System.Drawing.Point(811, 25);
             this.numericUpDownAddSongTrackLength.Maximum = new decimal(new int[] {
             1874919423,
             2328306,
@@ -249,7 +243,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(689, 24);
+            this.label13.Location = new System.Drawing.Point(720, 28);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(71, 13);
             this.label13.TabIndex = 26;
@@ -263,14 +257,6 @@
             this.textBoxAddCDTitle.TabIndex = 27;
             this.textBoxAddCDTitle.Text = "Title";
             // 
-            // textBoxAddCDArtist
-            // 
-            this.textBoxAddCDArtist.Location = new System.Drawing.Point(101, 96);
-            this.textBoxAddCDArtist.Name = "textBoxAddCDArtist";
-            this.textBoxAddCDArtist.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAddCDArtist.TabIndex = 32;
-            this.textBoxAddCDArtist.Text = "Artist";
-            // 
             // comboBoxRateSongorCD
             // 
             this.comboBoxRateSongorCD.FormattingEnabled = true;
@@ -279,17 +265,17 @@
             this.comboBoxRateSongorCD.Size = new System.Drawing.Size(294, 21);
             this.comboBoxRateSongorCD.TabIndex = 33;
             // 
-            // numericUpDown8
+            // numericUpDownRateSongCD
             // 
-            this.numericUpDown8.Location = new System.Drawing.Point(418, 159);
-            this.numericUpDown8.Maximum = new decimal(new int[] {
+            this.numericUpDownRateSongCD.Location = new System.Drawing.Point(418, 159);
+            this.numericUpDownRateSongCD.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(43, 20);
-            this.numericUpDown8.TabIndex = 36;
+            this.numericUpDownRateSongCD.Name = "numericUpDownRateSongCD";
+            this.numericUpDownRateSongCD.Size = new System.Drawing.Size(43, 20);
+            this.numericUpDownRateSongCD.TabIndex = 36;
             // 
             // label16
             // 
@@ -387,7 +373,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(388, 22);
+            this.label19.Location = new System.Drawing.Point(428, 19);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(36, 13);
             this.label19.TabIndex = 50;
@@ -396,7 +382,7 @@
             // labelAddSongTrackNumber
             // 
             this.labelAddSongTrackNumber.AutoSize = true;
-            this.labelAddSongTrackNumber.Location = new System.Drawing.Point(562, 23);
+            this.labelAddSongTrackNumber.Location = new System.Drawing.Point(597, 23);
             this.labelAddSongTrackNumber.Name = "labelAddSongTrackNumber";
             this.labelAddSongTrackNumber.Size = new System.Drawing.Size(75, 13);
             this.labelAddSongTrackNumber.TabIndex = 51;
@@ -404,7 +390,7 @@
             // 
             // numericUpDownAddSongTrackNumber
             // 
-            this.numericUpDownAddSongTrackNumber.Location = new System.Drawing.Point(643, 20);
+            this.numericUpDownAddSongTrackNumber.Location = new System.Drawing.Point(678, 25);
             this.numericUpDownAddSongTrackNumber.Maximum = new decimal(new int[] {
             1440,
             0,
@@ -426,7 +412,7 @@
             // 
             // numericUpDownAddCDYear
             // 
-            this.numericUpDownAddCDYear.Location = new System.Drawing.Point(263, 96);
+            this.numericUpDownAddCDYear.Location = new System.Drawing.Point(369, 96);
             this.numericUpDownAddCDYear.Maximum = new decimal(new int[] {
             2017,
             0,
@@ -449,7 +435,7 @@
             // labelAddCDYear
             // 
             this.labelAddCDYear.AutoSize = true;
-            this.labelAddCDYear.Location = new System.Drawing.Point(223, 101);
+            this.labelAddCDYear.Location = new System.Drawing.Point(321, 101);
             this.labelAddCDYear.Name = "labelAddCDYear";
             this.labelAddCDYear.Size = new System.Drawing.Size(29, 13);
             this.labelAddCDYear.TabIndex = 54;
@@ -492,7 +478,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(216, 28);
+            this.label8.Location = new System.Drawing.Point(273, 9);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 59;
@@ -502,17 +488,59 @@
             // 
             this.comboBoxAddSongAlbum.DisplayMember = "ID";
             this.comboBoxAddSongAlbum.FormattingEnabled = true;
-            this.comboBoxAddSongAlbum.Location = new System.Drawing.Point(258, 25);
+            this.comboBoxAddSongAlbum.Location = new System.Drawing.Point(300, 28);
             this.comboBoxAddSongAlbum.Name = "comboBoxAddSongAlbum";
             this.comboBoxAddSongAlbum.Size = new System.Drawing.Size(121, 21);
             this.comboBoxAddSongAlbum.TabIndex = 60;
             this.comboBoxAddSongAlbum.ValueMember = "ID";
+            // 
+            // comboBoxAddSongArtist
+            // 
+            this.comboBoxAddSongArtist.DisplayMember = "ID";
+            this.comboBoxAddSongArtist.FormattingEnabled = true;
+            this.comboBoxAddSongArtist.Location = new System.Drawing.Point(159, 28);
+            this.comboBoxAddSongArtist.Name = "comboBoxAddSongArtist";
+            this.comboBoxAddSongArtist.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxAddSongArtist.TabIndex = 61;
+            this.comboBoxAddSongArtist.ValueMember = "ID";
+            // 
+            // comboBoxAddCDArtist
+            // 
+            this.comboBoxAddCDArtist.DisplayMember = "ID";
+            this.comboBoxAddCDArtist.FormattingEnabled = true;
+            this.comboBoxAddCDArtist.Location = new System.Drawing.Point(169, 95);
+            this.comboBoxAddCDArtist.Name = "comboBoxAddCDArtist";
+            this.comboBoxAddCDArtist.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxAddCDArtist.TabIndex = 62;
+            this.comboBoxAddCDArtist.ValueMember = "ID";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(133, 98);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(30, 13);
+            this.label9.TabIndex = 63;
+            this.label9.Text = "Artist";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(133, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(30, 13);
+            this.label10.TabIndex = 64;
+            this.label10.Text = "Artist";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 612);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.comboBoxAddCDArtist);
+            this.Controls.Add(this.comboBoxAddSongArtist);
             this.Controls.Add(this.comboBoxAddSongAlbum);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBoxAddGenre);
@@ -532,17 +560,15 @@
             this.Controls.Add(this.radioButtonFindArtist);
             this.Controls.Add(this.radioButtonFindTitle);
             this.Controls.Add(this.textBoxFindKeywordSearch);
-            this.Controls.Add(this.numericUpDown8);
+            this.Controls.Add(this.numericUpDownRateSongCD);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.comboBoxRateSongorCD);
-            this.Controls.Add(this.textBoxAddCDArtist);
             this.Controls.Add(this.textBoxAddCDTitle);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.numericUpDownAddSongTrackLength);
             this.Controls.Add(this.comboBoxAddSongGenre);
-            this.Controls.Add(this.textBoxAddSongArtist);
             this.Controls.Add(this.textBoxAddSongTitle);
             this.Controls.Add(this.buttonRate);
             this.Controls.Add(this.btnAddCD);
@@ -563,7 +589,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.genreBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongTrackLength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRateSongCD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongTrackNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddCDYear)).EndInit();
             this.ResumeLayout(false);
@@ -586,15 +612,13 @@
         private System.Windows.Forms.Button btnAddCD;
         private System.Windows.Forms.Button buttonRate;
         private System.Windows.Forms.TextBox textBoxAddSongTitle;
-        private System.Windows.Forms.TextBox textBoxAddSongArtist;
         private System.Windows.Forms.ComboBox comboBoxAddSongGenre;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NumericUpDown numericUpDownAddSongTrackLength;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxAddCDTitle;
-        private System.Windows.Forms.TextBox textBoxAddCDArtist;
         private System.Windows.Forms.ComboBox comboBoxRateSongorCD;
-        private System.Windows.Forms.NumericUpDown numericUpDown8;
+        private System.Windows.Forms.NumericUpDown numericUpDownRateSongCD;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBoxFindKeywordSearch;
@@ -617,6 +641,10 @@
         private System.Windows.Forms.BindingSource genreBindingSource;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxAddSongAlbum;
+        private System.Windows.Forms.ComboBox comboBoxAddSongArtist;
+        private System.Windows.Forms.ComboBox comboBoxAddCDArtist;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
 

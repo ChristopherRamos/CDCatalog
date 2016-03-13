@@ -129,7 +129,7 @@ namespace CDCatalog
             }
         }
 
-        private static void InsertRating(int i, string t, int r)
+        private static void InsertRating(int i, string t)
         {
             using (var context = new CDCatalogContext())
             {
@@ -138,7 +138,7 @@ namespace CDCatalog
                     Song s = (from x in context.Songs
                               where x.Id == i
                               select x).FirstOrDefault();
-                    s.Rating = r;
+                    s.Rating = i;
                     context.SaveChanges();
                 }
 
@@ -147,7 +147,7 @@ namespace CDCatalog
                     Album a = (from x in context.Albums
                               where x.Id == i
                               select x).FirstOrDefault();
-                    a.Rating = r;
+                    a.Rating = i;
                     context.SaveChanges();
                 }
             }
@@ -187,19 +187,10 @@ namespace CDCatalog
 
         private void buttonRate_Click(object sender, EventArgs e)
         {
-            string comboBoxDisplayString = comboBoxRateSongorCD.Text;
-            bool isSong = comboBoxDisplayString.Contains("Song - ");
-            string comboBoxAsset;
-
-            if (isSong == true)
-            { 
-                comboBoxAsset = "Song";
-            }
-            else{
-                comboBoxAsset = "Album";
-            }
-
-            InsertRating(Convert.ToInt32(comboBoxRateSongorCD.SelectedValue), comboBoxAsset, Convert.ToInt32(numericUpDownRateSongCD.Value));
+            string comboBoxDisplayString = comboBoxRateSongorCD.DisplayMember.ToString();
+            
+            
+            InsertRating(d)
         }
 
         private void refreshComboBoxes()
