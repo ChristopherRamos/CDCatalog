@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CDCatalog
 {
-    public class CombinedSongsAlbums
+    class SongDetails
     {
+        public string AssetType { get; set; }
         public string Title { get; set; }
         public string Artist { get; set; }
-        public string AssetType { get; set; }
-        public int ID { get; set; }   
+        
+        public int ID { get; set; }  
     }
-
 }

@@ -218,6 +218,8 @@ namespace CDCatalog
                                            where (ta.Title.Contains(keyword))
                                            select new {ta,n};
 
+                        AlbumArtistList.ToList();
+
                         var SongArtistList = from ts in context.Songs 
                                            join n in context.Artists on ts.ArtistId equals n.ID
                                            where (ts.Title.Contains(keyword))
@@ -374,6 +376,8 @@ namespace CDCatalog
                                          where ts.Id == id
                                          select new { ts, n, g, a };
 
+                    SongArtistGenreList.ToList();
+
                     var SongDetails = new List<Details>();
 
                     foreach (var item in SongArtistGenreList)
@@ -381,7 +385,7 @@ namespace CDCatalog
                         SongDetails.Add(new Details()
                         {
                             AssetType = "Song",
-                            Title = item.ts.Title.ToString(),
+                            Title = item.ts.Title,
                             Artist = item.n.Name,
                             AlbumTitle = item.a.Title,
                             TrackNumber = Convert.ToInt32(item.ts.TrackNumber),
@@ -391,9 +395,12 @@ namespace CDCatalog
                         });
                     }
 
-                    dataGridViewDetails.DataSource = SongDetails;
+                    dataGridViewCDTracks
+                    dataGridView.DataSource = MergedSongCDlist;
+
                 }
                  
+                //label20.Text = "Clicked";
             }
         }
     }

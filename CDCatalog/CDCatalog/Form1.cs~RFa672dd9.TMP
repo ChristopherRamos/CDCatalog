@@ -202,7 +202,18 @@ namespace CDCatalog
             InsertRating(Convert.ToInt32(comboBoxRateSongorCD.SelectedValue), comboBoxAsset, Convert.ToInt32(numericUpDownRateSongCD.Value));
         }
 
-        private void populateDataGridViewFind(string keyword, string searchtype)
+        private void add(string assettype, string title, string artist)
+        {
+            //Array for the rows
+            String[] row = {assettype, title, artist};
+
+            ListViewItem item = new ListViewItem(row);
+
+            //Add items
+            listViewFind.Items.Add(item);
+        }
+
+        private void populateListViewFind(string keyword, string searchtype)
         {
             
             using(var context = new CDCatalogContext())
@@ -213,47 +224,20 @@ namespace CDCatalog
 
                 case "Title":
 
-                        var AlbumArtistList = from ta in context.Albums 
+                        var SongArtistList = from ta in context.Albums 
                                            join n in context.Artists on ta.ArtistId equals n.ID
                                            where (ta.Title.Contains(keyword))
-                                           select new {ta,n};
+                                           select new {ta};
+                                           
 
-                        var SongArtistList = from ts in context.Songs 
+                        var AlbumArtistList = from ts in context.Songs 
                                            join n in context.Artists on ts.ArtistId equals n.ID
                                            where (ts.Title.Contains(keyword))
-                                           select new {ts,n};
+                                           select new {ts};
 
-
-                        var MergedSongCDlist = new List<CombinedSongsAlbums>();
-
-                        foreach (var item in AlbumArtistList)
-                        {
-                            MergedSongCDlist.Add(new CombinedSongsAlbums()
-                            {
-                                AssetType = "CD",
-                                Title = item.ta.Title,
-                                Artist = item.n.Name,
-                                ID = item.ta.Id
-                                
-                            });
-                        }
-
-                        foreach (var item in SongArtistList)
-                        {
-                            MergedSongCDlist.Add(new CombinedSongsAlbums()
-                            {
-                                AssetType = "Song",
-                                Title = item.ts.Title,
-                                Artist = item.n.Name,
-                                ID = item.ts.Id,
-                            });
-
-                        }
-
-                       
-                        dataGridViewFindSongCD.DataSource = MergedSongCDlist;
-                        dataGridViewFindSongCD.Columns[3].Visible = false;
-
+                        //var SongCDQuery = (from c in context.Albums
+                        //                   join a in context.Artists on c.ArtistId equals a.ID
+                        //                   select new { c, a }).ToList();
 
                 break;
 
@@ -273,6 +257,23 @@ namespace CDCatalog
         }
         }
                
+
+        //        var MergedSongCDlist = new List<CombinedSongsAlbums>();
+
+
+        //        foreach (var item in SongCDQuery)
+        //        {
+        //            MergedSongCDlist.Add(new CombinedSongsAlbums()
+        //            {
+        //                Title = "Song - " + item.c.Title,
+        //                Artist = item.a.Name,
+        //                ID = item.c.Id,
+        //                AssetType = "Song"
+        //            });
+
+        //        }
+        //    }
+        //}
 
         private void refreshComboBoxes()
         {
@@ -346,55 +347,7 @@ namespace CDCatalog
                 searchtype = "Genre";
             }
     
-            populateDataGridViewFind(textBoxFindKeywordSearch.Text, searchtype);
-        }
-
-        private void dataGridViewFindSongCD_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-            string assetype = dataGridViewFindSongCD.SelectedCells[2].Value.ToString();
-            int assetid = Convert.ToInt32(dataGridViewFindSongCD.SelectedCells[3].Value);
-
-            showDetails(assetype, assetid);
-        }
-
-        private void showDetails(string assettype, int id)
-        {
-            if (assettype == "Song")
-            {
-                using (var context = new CDCatalogContext())
-                {
-     
-                    var SongArtistGenreList = 
-                                         from ts in context.Songs
-                                         join n in context.Artists on ts.ArtistId equals n.ID
-                                         join g in context.Genres on ts.GenreID equals g.ID
-                                         join a in context.Albums on ts.AlbumId equals a.Id
-                                         where ts.Id == id
-                                         select new { ts, n, g, a };
-
-                    var SongDetails = new List<Details>();
-
-                    foreach (var item in SongArtistGenreList)
-                    {
-                        SongDetails.Add(new Details()
-                        {
-                            AssetType = "Song",
-                            Title = item.ts.Title.ToString(),
-                            Artist = item.n.Name,
-                            AlbumTitle = item.a.Title,
-                            TrackNumber = Convert.ToInt32(item.ts.TrackNumber),
-                            Genre = item.g.Name,
-                            TrackLength = Convert.ToInt32(item.ts.TrackLength),
-                            Rating = Convert.ToInt32(item.ts.Rating)
-                        });
-                    }
-
-                    dataGridViewDetails.DataSource = SongDetails;
-                }
-                 
-            }
+            populateListViewFind(textBoxFindKeywordSearch.Text, searchtype);
         }
     }
 }

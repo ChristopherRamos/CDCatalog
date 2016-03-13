@@ -84,8 +84,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.dataGridViewDetails = new System.Windows.Forms.DataGridView();
-            this.dataGridViewPlaylist = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.genreBindingSource)).BeginInit();
@@ -95,8 +95,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddCDYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFindSongCD)).BeginInit();
             this.groupBoxFindSongCD.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetails)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaylist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -562,7 +562,7 @@
             // 
             // groupBoxFindSongCD
             // 
-            this.groupBoxFindSongCD.Controls.Add(this.dataGridViewDetails);
+            this.groupBoxFindSongCD.Controls.Add(this.dataGridView1);
             this.groupBoxFindSongCD.Controls.Add(this.label24);
             this.groupBoxFindSongCD.Controls.Add(this.label23);
             this.groupBoxFindSongCD.Controls.Add(this.label22);
@@ -641,28 +641,28 @@
             this.label24.TabIndex = 74;
             this.label24.Text = "label24";
             // 
-            // dataGridViewDetails
+            // dataGridView1
             // 
-            this.dataGridViewDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDetails.Location = new System.Drawing.Point(154, 28);
-            this.dataGridViewDetails.Name = "dataGridViewDetails";
-            this.dataGridViewDetails.Size = new System.Drawing.Size(240, 139);
-            this.dataGridViewDetails.TabIndex = 75;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(154, 28);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 139);
+            this.dataGridView1.TabIndex = 75;
             // 
-            // dataGridViewPlaylist
+            // dataGridView2
             // 
-            this.dataGridViewPlaylist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPlaylist.Location = new System.Drawing.Point(12, 478);
-            this.dataGridViewPlaylist.Name = "dataGridViewPlaylist";
-            this.dataGridViewPlaylist.Size = new System.Drawing.Size(454, 124);
-            this.dataGridViewPlaylist.TabIndex = 69;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(12, 478);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(454, 124);
+            this.dataGridView2.TabIndex = 69;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 612);
-            this.Controls.Add(this.dataGridViewPlaylist);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.groupBoxFindSongCD);
             this.Controls.Add(this.dataGridViewFindSongCD);
             this.Controls.Add(this.label12);
@@ -722,8 +722,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFindSongCD)).EndInit();
             this.groupBoxFindSongCD.ResumeLayout(false);
             this.groupBoxFindSongCD.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetails)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaylist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -786,8 +786,8 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DataGridView dataGridViewDetails;
-        private System.Windows.Forms.DataGridView dataGridViewPlaylist;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
 

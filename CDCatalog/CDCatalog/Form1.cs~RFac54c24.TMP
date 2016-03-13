@@ -218,6 +218,8 @@ namespace CDCatalog
                                            where (ta.Title.Contains(keyword))
                                            select new {ta,n};
 
+                        AlbumArtistList.ToList();
+
                         var SongArtistList = from ts in context.Songs 
                                            join n in context.Artists on ts.ArtistId equals n.ID
                                            where (ts.Title.Contains(keyword))
@@ -347,54 +349,6 @@ namespace CDCatalog
             }
     
             populateDataGridViewFind(textBoxFindKeywordSearch.Text, searchtype);
-        }
-
-        private void dataGridViewFindSongCD_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-            string assetype = dataGridViewFindSongCD.SelectedCells[2].Value.ToString();
-            int assetid = Convert.ToInt32(dataGridViewFindSongCD.SelectedCells[3].Value);
-
-            showDetails(assetype, assetid);
-        }
-
-        private void showDetails(string assettype, int id)
-        {
-            if (assettype == "Song")
-            {
-                using (var context = new CDCatalogContext())
-                {
-     
-                    var SongArtistGenreList = 
-                                         from ts in context.Songs
-                                         join n in context.Artists on ts.ArtistId equals n.ID
-                                         join g in context.Genres on ts.GenreID equals g.ID
-                                         join a in context.Albums on ts.AlbumId equals a.Id
-                                         where ts.Id == id
-                                         select new { ts, n, g, a };
-
-                    var SongDetails = new List<Details>();
-
-                    foreach (var item in SongArtistGenreList)
-                    {
-                        SongDetails.Add(new Details()
-                        {
-                            AssetType = "Song",
-                            Title = item.ts.Title.ToString(),
-                            Artist = item.n.Name,
-                            AlbumTitle = item.a.Title,
-                            TrackNumber = Convert.ToInt32(item.ts.TrackNumber),
-                            Genre = item.g.Name,
-                            TrackLength = Convert.ToInt32(item.ts.TrackLength),
-                            Rating = Convert.ToInt32(item.ts.Rating)
-                        });
-                    }
-
-                    dataGridViewDetails.DataSource = SongDetails;
-                }
-                 
-            }
         }
     }
 }
