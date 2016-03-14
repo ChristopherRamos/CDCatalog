@@ -307,42 +307,37 @@ namespace CDCatalog
                 case "Genre":
                 {
 
-                    var AlbumArtistList3 = from ta in context.Albums
-                                           join n in context.Artists on ta.ArtistId equals n.ID
-                                           where (n.Name.Contains(keyword))
-                                           select new { ta, n };
-
-                    var SongArtistList3 = from ts in context.Songs
-                                          join n in context.Artists on ts.ArtistId equals n.ID
-                                          where (n.Name.Contains(keyword))
-                                          select new { ts, n };
+                    var AlbumSongArtistGenreList = from ta in context.Albums
+                                           join ts in context.Songs on ta.Id equals ts.AlbumId
+                                           join g in context.Genres on ts.GenreID equals g.ID
+                                           join n in context.Artists on ts.ArtistId equals n.ID
+                                           where (g.Name.Contains(keyword))
+                                           select new { ta, ts, g, n };
 
 
                     var MergedSongCDlist3 = new List<CombinedSongsAlbums>();
 
-                    foreach (var item in AlbumArtistList2)
+                    foreach (var item in AlbumSongArtistGenreList)
                     {
+                        MergedSongCDlist3.Add(new CombinedSongsAlbums()
+                        {
+                            AssetType = "Song",
+                            Title = item.ts.Title,
+                            Artist = item.n.Name,
+                            ID = item.ts.Id
+                        });
+
                         MergedSongCDlist3.Add(new CombinedSongsAlbums()
                         {
                             AssetType = "CD",
                             Title = item.ta.Title,
                             Artist = item.n.Name,
                             ID = item.ta.Id
-
                         });
                     }
 
-                    foreach (var item in SongArtistList3)
-                    {
-                        MergedSongCDlist2.Add(new CombinedSongsAlbums()
-                        {
-                            AssetType = "Song",
-                            Title = item.ts.Title,
-                            Artist = item.n.Name,
-                            ID = item.ts.Id,
-                        });
-
-                    }
+                    dataGridViewFindSongCD.DataSource = MergedSongCDlist3;
+                    dataGridViewFindSongCD.Columns[3].Visible = false;
 
                 }
                 break;
