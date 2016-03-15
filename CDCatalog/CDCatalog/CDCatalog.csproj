@@ -58,6 +58,7 @@
     <Compile Include="Details.cs" />
     <Compile Include="CDCatalogContext.cs" />
     <Compile Include="CombinedSongsAlbums.cs" />
+    <Compile Include="DetailsAlbum.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

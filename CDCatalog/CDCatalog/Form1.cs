@@ -432,8 +432,15 @@ namespace CDCatalog
             showDetails(assetype, assetid);
         }
 
+        private List<Details> generatePlaylist
+        { 
+        
+        }
+
         private void showDetails(string assettype, int id)
         {
+            dataGridViewDetails.DataSource = null;
+
             if (assettype == "Song")
             {
                 using (var context = new CDCatalogContext())
@@ -467,6 +474,44 @@ namespace CDCatalog
                     dataGridViewDetails.DataSource = SongDetails;
                 }
                  
+            }
+            else if (assettype == "CD")
+            { 
+                 using (var context = new CDCatalogContext())
+                {
+                     //ta = title album, n = name
+                    var AlbumArtistList = 
+                                         from ta in context.Albums
+                                         join n in context.Artists on ta.ArtistId equals n.ID
+                                         where ta.Id == id
+                                         select new { ta, n};
+                     //ts = title song
+                    var AlbumSongList =
+                                        from ts in context.Songs
+                                        join ta in context.Albums on ts.AlbumId equals ta.Id
+                                        where ta.Id == id
+                                        select new { ts, ta};
+
+                    var SongDetails = new List<Details>();
+
+                    foreach (var item in AlbumSongList)
+                    {
+                        SongDetails.Add(new Details()
+                        {
+                            Title = item.ts.Title.ToString(),
+                            TrackNumber = Convert.ToInt32(item.ts.TrackNumber),
+                            TrackLength = Convert.ToInt32(item.ts.TrackLength)
+                        });
+                    }
+
+                    dataGridViewDetails.DataSource = SongDetails;
+                    dataGridViewDetails.Columns[0].Visible = false;
+                    dataGridViewDetails.Columns[2].Visible = false;
+                    dataGridViewDetails.Columns[3].Visible = false;
+                    dataGridViewDetails.Columns[5].Visible = false;
+                    dataGridViewDetails.Columns[7].Visible = false;
+                }
+            
             }
         }
     }
