@@ -34,8 +34,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDownCreatePlaylist = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnAddSong = new System.Windows.Forms.Button();
             this.btnAddCD = new System.Windows.Forms.Button();
             this.buttonRate = new System.Windows.Forms.Button();
@@ -55,7 +57,7 @@
             this.radioButtonFindArtist = new System.Windows.Forms.RadioButton();
             this.radioButtonFindGenre = new System.Windows.Forms.RadioButton();
             this.btnFind = new System.Windows.Forms.Button();
-            this.buttonCreatePlaylist = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.labelAddSongTrackNumber = new System.Windows.Forms.Label();
             this.numericUpDownAddSongTrackNumber = new System.Windows.Forms.NumericUpDown();
@@ -78,7 +80,8 @@
             this.dataGridViewDetails = new System.Windows.Forms.DataGridView();
             this.label15 = new System.Windows.Forms.Label();
             this.dataGridViewPlaylist = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCreatePlaylist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.genreBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongTrackLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRateSongCD)).BeginInit();
@@ -135,27 +138,29 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Create a Playlist for a specific time";
             // 
-            // numericUpDownCreatePlaylist
+            // numericUpDown1
             // 
-            this.numericUpDownCreatePlaylist.Location = new System.Drawing.Point(18, 452);
-            this.numericUpDownCreatePlaylist.Maximum = new decimal(new int[] {
+            this.numericUpDown1.Location = new System.Drawing.Point(18, 452);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
             1440,
             0,
             0,
             0});
-            this.numericUpDownCreatePlaylist.Minimum = new decimal(new int[] {
-            1,
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(36, 20);
+            this.numericUpDown1.TabIndex = 5;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(94, 452);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            59,
             0,
             0,
             0});
-            this.numericUpDownCreatePlaylist.Name = "numericUpDownCreatePlaylist";
-            this.numericUpDownCreatePlaylist.Size = new System.Drawing.Size(36, 20);
-            this.numericUpDownCreatePlaylist.TabIndex = 5;
-            this.numericUpDownCreatePlaylist.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDown2.TabIndex = 6;
             // 
             // label6
             // 
@@ -165,6 +170,15 @@
             this.label6.Size = new System.Drawing.Size(28, 13);
             this.label6.TabIndex = 7;
             this.label6.Text = "mins";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(156, 457);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "seconds";
             // 
             // btnAddSong
             // 
@@ -340,15 +354,14 @@
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
-            // buttonCreatePlaylist
+            // button6
             // 
-            this.buttonCreatePlaylist.Location = new System.Drawing.Point(386, 447);
-            this.buttonCreatePlaylist.Name = "buttonCreatePlaylist";
-            this.buttonCreatePlaylist.Size = new System.Drawing.Size(75, 23);
-            this.buttonCreatePlaylist.TabIndex = 48;
-            this.buttonCreatePlaylist.Text = "Create";
-            this.buttonCreatePlaylist.UseVisualStyleBackColor = true;
-            this.buttonCreatePlaylist.Click += new System.EventHandler(this.buttonCreatePlaylist_Click);
+            this.button6.Location = new System.Drawing.Point(386, 447);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 48;
+            this.button6.Text = "Create";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // label19
             // 
@@ -577,7 +590,6 @@
             this.dataGridViewPlaylist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPlaylist.Location = new System.Drawing.Point(12, 478);
             this.dataGridViewPlaylist.Name = "dataGridViewPlaylist";
-            this.dataGridViewPlaylist.RowHeadersVisible = false;
             this.dataGridViewPlaylist.Size = new System.Drawing.Size(454, 124);
             this.dataGridViewPlaylist.TabIndex = 69;
             // 
@@ -605,7 +617,7 @@
             this.Controls.Add(this.numericUpDownAddSongTrackNumber);
             this.Controls.Add(this.labelAddSongTrackNumber);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.buttonCreatePlaylist);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.radioButtonFindGenre);
             this.Controls.Add(this.radioButtonFindArtist);
@@ -624,8 +636,10 @@
             this.Controls.Add(this.buttonRate);
             this.Controls.Add(this.btnAddCD);
             this.Controls.Add(this.btnAddSong);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.numericUpDownCreatePlaylist);
+            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -634,7 +648,8 @@
             this.Name = "Form1";
             this.Text = "Compact Disc Catalog";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCreatePlaylist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.genreBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAddSongTrackLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRateSongCD)).EndInit();
@@ -657,8 +672,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numericUpDownCreatePlaylist;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnAddSong;
         private System.Windows.Forms.Button btnAddCD;
         private System.Windows.Forms.Button buttonRate;
@@ -677,7 +694,7 @@
         private System.Windows.Forms.RadioButton radioButtonFindArtist;
         private System.Windows.Forms.RadioButton radioButtonFindGenre;
         private System.Windows.Forms.Button btnFind;
-        private System.Windows.Forms.Button buttonCreatePlaylist;
+        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label labelAddSongTrackNumber;
         private System.Windows.Forms.NumericUpDown numericUpDownAddSongTrackNumber;
