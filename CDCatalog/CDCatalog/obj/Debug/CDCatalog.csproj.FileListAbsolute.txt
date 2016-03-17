@@ -31,7 +31,8 @@ C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\bin\Debug\EntityF
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.exe
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.pdb
-C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.csprojResolveAssemblyReference.cache
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.MainForm.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.AddSongForm.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.AddAlbumForm.resources
+C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.FindForm.resources
+C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.csprojResolveAssemblyReference.cache
