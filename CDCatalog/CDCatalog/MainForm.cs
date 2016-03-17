@@ -10,39 +10,16 @@ using System.Windows.Forms;
 
 namespace CDCatalog
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            refreshComboBoxes();
-        }
-
-        private void btnAddSong_Click(object sender, EventArgs e)
-        {
-
-            var song = new Song
-            {
-                ArtistId = Convert.ToInt32(comboBoxAddSongArtist.SelectedValue),
-                Title = textBoxAddSongTitle.Text,
-                AlbumId = Convert.ToInt32(comboBoxAddSongAlbum.SelectedValue),
-                TrackNumber = Convert.ToInt32(numericUpDownAddSongTrackNumber.Value),
-                GenreID = Convert.ToInt32(comboBoxAddSongGenre.SelectedValue),
-                TrackLength = Convert.ToInt32(numericUpDownAddSongTrackLength.Value),
-            };
-
-            using (var context = new CDCatalogContext())
-            {
-                context.Database.Log = Console.WriteLine;
-                context.Songs.Add(song);
-                context.SaveChanges();
-            }
-
-            refreshComboBoxes();
+            //refreshComboBoxes();
         }
 
         private int GetArtistId(string p)
@@ -153,36 +130,16 @@ namespace CDCatalog
             }
         }
 
-        private void btnAddCD_Click(object sender, EventArgs e)
-        {
-
-            var album = new Album
-            {
-                ArtistId = Convert.ToInt32(comboBoxAddCDArtist.SelectedValue),
-                Title = textBoxAddCDTitle.Text,
-                Year = Convert.ToInt32(numericUpDownAddCDYear.Value),
-            };
-
-            using (var context = new CDCatalogContext())
-            {
-                context.Database.Log = Console.WriteLine;
-                context.Albums.Add(album);
-                context.SaveChanges();
-            }
-
-            refreshComboBoxes();
-        }
-
         private void btnAddArtist_Click(object sender, EventArgs e)
         {
             GetArtistId(textBoxAddArtist.Text);
-            refreshComboBoxes();
+            //refreshComboBoxes();
         }
 
         private void buttonAddGenre_Click(object sender, EventArgs e)
         {
             GetGenreId(textBoxAddGenre.Text);
-            refreshComboBoxes();
+            //refreshComboBoxes();
         }
 
         private void buttonRate_Click(object sender, EventArgs e)
@@ -347,59 +304,59 @@ namespace CDCatalog
         }
                
 
-        private void refreshComboBoxes()
-        {
-            using (var context = new CDCatalogContext())
-            {
-                var Artistlist = context.Artists.OrderBy(a => a.Name).ToList();
-                var Genrelist = context.Genres.OrderBy(g => g.Name).ToList();
-                var Songlist = context.Songs.OrderBy(s => s.Title).ToList();
-                var CDlist = context.Albums.OrderBy(c => c.Title).ToList();
+        //private void refreshComboBoxes()
+        //{
+        //    using (var context = new CDCatalogContext())
+        //    {
+        //        var Artistlist = context.Artists.OrderBy(a => a.Name).ToList();
+        //        var Genrelist = context.Genres.OrderBy(g => g.Name).ToList();
+        //        var Songlist = context.Songs.OrderBy(s => s.Title).ToList();
+        //        var CDlist = context.Albums.OrderBy(c => c.Title).ToList();
 
-                var MergedSongCDlist = new List<CombinedSongsAlbums>();
+        //        var MergedSongCDlist = new List<CombinedSongsAlbums>();
 
-                foreach (var item in Songlist)
-                {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
-                    {
-                        Title = "Song - " + item.Title,
-                        ID = item.Id,
-                        AssetType = "Song"
-                    });
+        //        foreach (var item in Songlist)
+        //        {
+        //            MergedSongCDlist.Add(new CombinedSongsAlbums()
+        //            {
+        //                Title = "Song - " + item.Title,
+        //                ID = item.Id,
+        //                AssetType = "Song"
+        //            });
 
-                }
+        //        }
 
-                foreach (var item in CDlist)
-                {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
-                    {
-                        Title = "CD - " + item.Title,
-                        ID = item.Id,
-                        AssetType = "Album"
-                    });
-                }
+        //        foreach (var item in CDlist)
+        //        {
+        //            MergedSongCDlist.Add(new CombinedSongsAlbums()
+        //            {
+        //                Title = "CD - " + item.Title,
+        //                ID = item.Id,
+        //                AssetType = "Album"
+        //            });
+        //        }
 
-                this.comboBoxAddCDArtist.DataSource = Artistlist;
-                this.comboBoxAddCDArtist.DisplayMember = "Name";
-                this.comboBoxAddCDArtist.ValueMember = "ID";
+        //        this.comboBoxAddCDArtist.DataSource = Artistlist;
+        //        this.comboBoxAddCDArtist.DisplayMember = "Name";
+        //        this.comboBoxAddCDArtist.ValueMember = "ID";
 
-                this.comboBoxAddSongArtist.DataSource = Artistlist;
-                this.comboBoxAddSongArtist.DisplayMember = "Name";
-                this.comboBoxAddSongArtist.ValueMember = "ID";
+        //        this.comboBoxAddSongArtist.DataSource = Artistlist;
+        //        this.comboBoxAddSongArtist.DisplayMember = "Name";
+        //        this.comboBoxAddSongArtist.ValueMember = "ID";
 
-                this.comboBoxAddSongAlbum.DataSource = CDlist;
-                this.comboBoxAddSongAlbum.DisplayMember = "Title";
-                this.comboBoxAddSongAlbum.ValueMember = "Id";
+        //        this.comboBoxAddSongAlbum.DataSource = CDlist;
+        //        this.comboBoxAddSongAlbum.DisplayMember = "Title";
+        //        this.comboBoxAddSongAlbum.ValueMember = "Id";
 
-                this.comboBoxAddSongGenre.DataSource = Genrelist;
-                this.comboBoxAddSongGenre.DisplayMember = "Name";
-                this.comboBoxAddSongGenre.ValueMember = "ID";
+        //        this.comboBoxAddSongGenre.DataSource = Genrelist;
+        //        this.comboBoxAddSongGenre.DisplayMember = "Name";
+        //        this.comboBoxAddSongGenre.ValueMember = "ID";
 
-                this.comboBoxRateSongorCD.DataSource = MergedSongCDlist;
-                this.comboBoxRateSongorCD.DisplayMember = "Title";
-                this.comboBoxRateSongorCD.ValueMember = "ID";
-            }      
-        }
+        //        this.comboBoxRateSongorCD.DataSource = MergedSongCDlist;
+        //        this.comboBoxRateSongorCD.DisplayMember = "Title";
+        //        this.comboBoxRateSongorCD.ValueMember = "ID";
+        //    }      
+        //}
 
         private void btnFind_Click(object sender, EventArgs e)
         {
@@ -577,6 +534,33 @@ namespace CDCatalog
         {
             int playlistlength = (Convert.ToInt32(numericUpDownCreatePlaylist.Value))*60;
             generatePlaylist(playlistlength);
+        }
+
+        private void albumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseChildFormsExcept("AddAlbumForm");
+            this.IsMdiContainer = true;
+            var AddAlbumForm = new AddAlbumForm();
+            AddAlbumForm.MdiParent = this;
+            AddAlbumForm.WindowState = FormWindowState.Maximized;
+            AddAlbumForm.Show();
+        }
+
+        private void songToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseChildFormsExcept("AddSongForm");
+            this.IsMdiContainer = true;
+            var AddSongForm = new AddSongForm();
+            AddSongForm.MdiParent = this;
+            AddSongForm.WindowState = FormWindowState.Maximized;
+            AddSongForm.Show();
+        }
+
+        public void CloseChildFormsExcept(string name)
+        {
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+                if (Application.OpenForms[i].Name != name && Application.OpenForms[i].Name !="MainForm")
+                    Application.OpenForms[i].Close();
         }
     }
 }
