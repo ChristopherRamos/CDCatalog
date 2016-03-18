@@ -83,6 +83,7 @@
             this.buttonRate.TabIndex = 38;
             this.buttonRate.Text = "Rate";
             this.buttonRate.UseVisualStyleBackColor = true;
+            this.buttonRate.Click += new System.EventHandler(this.buttonRate_Click);
             // 
             // label1
             // 

@@ -46,32 +46,32 @@ namespace CDCatalog
 
         private void byArtistToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CloseChildFormsExcept("FindForm");
+            CloseChildFormsExcept("SearchForm");
             this.IsMdiContainer = true;
-            var FindForm = new FindForm("Artist");
-            FindForm.MdiParent = this;
-            FindForm.WindowState = FormWindowState.Maximized;
-            FindForm.Show();
+            var SearchForm = new SearchForm("Artist");
+            SearchForm.MdiParent = this;
+            SearchForm.WindowState = FormWindowState.Maximized;
+            SearchForm.Show();
         }
 
         private void byGenreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CloseChildFormsExcept("FindForm");
+            CloseChildFormsExcept("SearchForm");
             this.IsMdiContainer = true;
-            var FindForm = new FindForm("Genre");
-            FindForm.MdiParent = this;
-            FindForm.WindowState = FormWindowState.Maximized;
-            FindForm.Show();
+            var SearchForm = new SearchForm("Genre");
+            SearchForm.MdiParent = this;
+            SearchForm.WindowState = FormWindowState.Maximized;
+            SearchForm.Show();
         }
 
         private void byTitleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CloseChildFormsExcept("FindForm");
+            CloseChildFormsExcept("SearchForm");
             this.IsMdiContainer = true;
-            var FindForm = new FindForm("Title");
-            FindForm.MdiParent = this;
-            FindForm.WindowState = FormWindowState.Maximized;
-            FindForm.Show();
+            var SearchForm = new SearchForm("Title");
+            SearchForm.MdiParent = this;
+            SearchForm.WindowState = FormWindowState.Maximized;
+            SearchForm.Show();
         }
 
         private void playlistToolStripMenuItem_Click(object sender, EventArgs e)

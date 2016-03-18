@@ -97,5 +97,7 @@ namespace CDCatalog
                 this.comboBoxRateSongorCD.ValueMember = "ID";
             }
         }
+
+      
     }
 }

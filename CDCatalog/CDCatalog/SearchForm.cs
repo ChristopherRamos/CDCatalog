@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace CDCatalog
 {
-    public partial class FindForm : Form
+    public partial class SearchForm : Form
     {
         private string callingMenuItem;
 
-        public FindForm()
+        public SearchForm()
         {
             InitializeComponent();
         }
 
-        //Overload FindForm class to accept a parameter that lets form know of calling menu item.
-        public FindForm(string _menuitem)
+        //Overload SearchForm class to accept a parameter that lets form know of calling menu item.
+        public SearchForm(string _menuitem)
         { 
             InitializeComponent();
             callingMenuItem = _menuitem;
@@ -60,22 +60,20 @@ namespace CDCatalog
             populateDataGridViewFind(textBoxFindKeywordSearch.Text, searchtype);
         }
 
-        private void dataGridViewFindSongCD_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-            string assetype = dataGridViewFindSongCD.SelectedCells[2].Value.ToString();
-            int assetid = Convert.ToInt32(dataGridViewFindSongCD.SelectedCells[3].Value);
-
-            showDetails(assetype, assetid);
-        }
-
         private void showDetails(string assettype, int id)
         {
             dataGridViewDetails.DataSource = null;
 
+            labelDetailsInfo.Text = "";
+            labelDetailsAlbumTitle.Text = "";
+            labelDetailsArtist.Text = "";
+            labelDetailsYear.Text = "";
+            labelDetailsRating.Text = "";
+
             if (assettype == "Song")
             {
+                labelDetailsInfo.Text = "Below are additional details of the song selected above:";
+
                 using (var context = new CDCatalogContext())
                 {
 
@@ -105,11 +103,14 @@ namespace CDCatalog
                     }
 
                     dataGridViewDetails.DataSource = SongDetails;
+                    dataGridViewDetails.Columns[0].Visible = false;
+                    dataGridViewDetails.Columns[7].Visible = false;
                 }
 
             }
             else if (assettype == "CD")
             {
+               
                 using (var context = new CDCatalogContext())
                 {
                     //ta = title album, n = name
@@ -123,6 +124,7 @@ namespace CDCatalog
                                         from ts in context.Songs
                                         join ta in context.Albums on ts.AlbumId equals ta.Id
                                         where ta.Id == id
+                                        orderby ts.TrackNumber ascending
                                         select new { ts, ta };
 
                     var SongDetails = new List<Details>();
@@ -137,12 +139,25 @@ namespace CDCatalog
                         });
                     }
 
+                    labelDetailsInfo.Text = "The following are additional details and list of songs on the album selected above:";
+                  
+                    foreach (var item in AlbumArtistList)
+                    {
+                        labelDetailsAlbumTitle.Text = "Album Title: " + item.ta.Title;
+                        labelDetailsArtist.Text = "Artist: " + item.n.Name;
+                        labelDetailsYear.Text = "Year: " + item.ta.Year.ToString();
+                        labelDetailsRating.Text = "Rating: " + item.ta.Rating.ToString();
+                    }
+
+
                     dataGridViewDetails.DataSource = SongDetails;
                     dataGridViewDetails.Columns[0].Visible = false;
                     dataGridViewDetails.Columns[2].Visible = false;
                     dataGridViewDetails.Columns[3].Visible = false;
                     dataGridViewDetails.Columns[5].Visible = false;
+                    dataGridViewDetails.Columns[6].Visible = false;
                     dataGridViewDetails.Columns[7].Visible = false;
+                    dataGridViewDetails.Columns[8].Visible = false;
                 }
 
             }
@@ -150,7 +165,6 @@ namespace CDCatalog
 
         private void populateDataGridViewFind(string keyword, string searchtype)
         {
-
             using (var context = new CDCatalogContext())
             {
 
@@ -290,6 +304,14 @@ namespace CDCatalog
                 }
 
             }
+        }
+
+        private void dataGridViewFindSongCD_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string assetype = dataGridViewFindSongCD.SelectedCells[2].Value.ToString();
+            int assetid = Convert.ToInt32(dataGridViewFindSongCD.SelectedCells[3].Value);
+
+            showDetails(assetype, assetid);
         }
     }
 }

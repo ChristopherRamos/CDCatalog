@@ -15,6 +15,7 @@ namespace CDCatalog
         public int TrackNumber { get; set; }
         public string Genre { get; set; }
         public int TrackLength { get; set; }
+        public int Year { get; set; }
         public int Rating { get; set; }
     }
 }

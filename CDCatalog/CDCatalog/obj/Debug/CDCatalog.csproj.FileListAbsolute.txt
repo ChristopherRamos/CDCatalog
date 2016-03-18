@@ -34,9 +34,9 @@ C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatal
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.MainForm.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.AddSongForm.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.AddAlbumForm.resources
-C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.FindForm.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.csprojResolveAssemblyReference.cache
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.PlaylistForm.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.RateForm.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.AddArtistForm.resources
 C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.AddGenreForm.resources
+C:\Users\cramos\Documents\GitHub\CDCatalog\CDCatalog\CDCatalog\obj\Debug\CDCatalog.SearchForm.resources
