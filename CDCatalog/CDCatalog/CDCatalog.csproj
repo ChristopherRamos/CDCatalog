@@ -59,6 +59,18 @@
     <Compile Include="AddAlbumForm.Designer.cs">
       <DependentUpon>AddAlbumForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddArtistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddArtistForm.Designer.cs">
+      <DependentUpon>AddArtistForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddGenreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddGenreForm.Designer.cs">
+      <DependentUpon>AddGenreForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddSongForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,11 +133,29 @@
       <DependentUpon>201603041939332_ChrisRamos3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PlaylistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlaylistForm.Designer.cs">
+      <DependentUpon>PlaylistForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RateForm.Designer.cs">
+      <DependentUpon>RateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Song.cs" />
     <EmbeddedResource Include="AddAlbumForm.resx">
       <DependentUpon>AddAlbumForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddArtistForm.resx">
+      <DependentUpon>AddArtistForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddGenreForm.resx">
+      <DependentUpon>AddGenreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddSongForm.resx">
       <DependentUpon>AddSongForm.cs</DependentUpon>
@@ -163,6 +193,9 @@
     <EmbeddedResource Include="Migrations\201603041939332_ChrisRamos3.resx">
       <DependentUpon>201603041939332_ChrisRamos3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlaylistForm.resx">
+      <DependentUpon>PlaylistForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -172,6 +205,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RateForm.resx">
+      <DependentUpon>RateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Genre.datasource" />
     <None Include="Properties\Settings.settings">
