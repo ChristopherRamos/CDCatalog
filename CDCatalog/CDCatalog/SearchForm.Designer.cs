@@ -37,14 +37,14 @@
             this.textBoxFindKeywordSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxFindSongCD = new System.Windows.Forms.GroupBox();
+            this.labelDetailsRating = new System.Windows.Forms.Label();
+            this.labelDetailsYear = new System.Windows.Forms.Label();
+            this.labelDetailsArtist = new System.Windows.Forms.Label();
+            this.labelDetailsAlbumTitle = new System.Windows.Forms.Label();
             this.dataGridViewDetails = new System.Windows.Forms.DataGridView();
             this.labelDetailsInfo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.labelDetailsAlbumTitle = new System.Windows.Forms.Label();
-            this.labelDetailsArtist = new System.Windows.Forms.Label();
-            this.labelDetailsYear = new System.Windows.Forms.Label();
-            this.labelDetailsRating = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFindSongCD)).BeginInit();
             this.groupBoxFindSongCD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetails)).BeginInit();
@@ -52,6 +52,8 @@
             // 
             // dataGridViewFindSongCD
             // 
+            this.dataGridViewFindSongCD.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewFindSongCD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewFindSongCD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFindSongCD.Location = new System.Drawing.Point(12, 139);
             this.dataGridViewFindSongCD.Name = "dataGridViewFindSongCD";
@@ -59,7 +61,9 @@
             this.dataGridViewFindSongCD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewFindSongCD.Size = new System.Drawing.Size(411, 137);
             this.dataGridViewFindSongCD.TabIndex = 74;
+            this.dataGridViewFindSongCD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFindSongCD_CellClick);
             this.dataGridViewFindSongCD.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFindSongCD_CellContentClick);
+            this.dataGridViewFindSongCD.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFindSongCD_CellContentDoubleClick);
             // 
             // label12
             // 
@@ -139,19 +143,53 @@
             this.groupBoxFindSongCD.Controls.Add(this.dataGridViewDetails);
             this.groupBoxFindSongCD.Location = new System.Drawing.Point(12, 319);
             this.groupBoxFindSongCD.Name = "groupBoxFindSongCD";
-            this.groupBoxFindSongCD.Size = new System.Drawing.Size(712, 185);
+            this.groupBoxFindSongCD.Size = new System.Drawing.Size(712, 203);
             this.groupBoxFindSongCD.TabIndex = 76;
             this.groupBoxFindSongCD.TabStop = false;
             this.groupBoxFindSongCD.Text = "Details";
             // 
+            // labelDetailsRating
+            // 
+            this.labelDetailsRating.AutoSize = true;
+            this.labelDetailsRating.Location = new System.Drawing.Point(409, 20);
+            this.labelDetailsRating.Name = "labelDetailsRating";
+            this.labelDetailsRating.Size = new System.Drawing.Size(0, 13);
+            this.labelDetailsRating.TabIndex = 79;
+            // 
+            // labelDetailsYear
+            // 
+            this.labelDetailsYear.AutoSize = true;
+            this.labelDetailsYear.Location = new System.Drawing.Point(332, 20);
+            this.labelDetailsYear.Name = "labelDetailsYear";
+            this.labelDetailsYear.Size = new System.Drawing.Size(0, 13);
+            this.labelDetailsYear.TabIndex = 78;
+            // 
+            // labelDetailsArtist
+            // 
+            this.labelDetailsArtist.AutoSize = true;
+            this.labelDetailsArtist.Location = new System.Drawing.Point(200, 20);
+            this.labelDetailsArtist.Name = "labelDetailsArtist";
+            this.labelDetailsArtist.Size = new System.Drawing.Size(0, 13);
+            this.labelDetailsArtist.TabIndex = 77;
+            // 
+            // labelDetailsAlbumTitle
+            // 
+            this.labelDetailsAlbumTitle.AutoSize = true;
+            this.labelDetailsAlbumTitle.Location = new System.Drawing.Point(6, 20);
+            this.labelDetailsAlbumTitle.Name = "labelDetailsAlbumTitle";
+            this.labelDetailsAlbumTitle.Size = new System.Drawing.Size(0, 13);
+            this.labelDetailsAlbumTitle.TabIndex = 76;
+            // 
             // dataGridViewDetails
             // 
+            this.dataGridViewDetails.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewDetails.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDetails.Location = new System.Drawing.Point(0, 36);
+            this.dataGridViewDetails.Location = new System.Drawing.Point(4, 36);
             this.dataGridViewDetails.Name = "dataGridViewDetails";
             this.dataGridViewDetails.RowHeadersVisible = false;
             this.dataGridViewDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDetails.Size = new System.Drawing.Size(764, 149);
+            this.dataGridViewDetails.Size = new System.Drawing.Size(701, 161);
             this.dataGridViewDetails.TabIndex = 75;
             // 
             // labelDetailsInfo
@@ -181,43 +219,11 @@
             this.label3.Text = "2. Double click on the search result below to show more details about the Song or" +
     " Album.";
             // 
-            // labelDetailsAlbumTitle
-            // 
-            this.labelDetailsAlbumTitle.AutoSize = true;
-            this.labelDetailsAlbumTitle.Location = new System.Drawing.Point(6, 20);
-            this.labelDetailsAlbumTitle.Name = "labelDetailsAlbumTitle";
-            this.labelDetailsAlbumTitle.Size = new System.Drawing.Size(0, 13);
-            this.labelDetailsAlbumTitle.TabIndex = 76;
-            // 
-            // labelDetailsArtist
-            // 
-            this.labelDetailsArtist.AutoSize = true;
-            this.labelDetailsArtist.Location = new System.Drawing.Point(200, 20);
-            this.labelDetailsArtist.Name = "labelDetailsArtist";
-            this.labelDetailsArtist.Size = new System.Drawing.Size(0, 13);
-            this.labelDetailsArtist.TabIndex = 77;
-            // 
-            // labelDetailsYear
-            // 
-            this.labelDetailsYear.AutoSize = true;
-            this.labelDetailsYear.Location = new System.Drawing.Point(332, 20);
-            this.labelDetailsYear.Name = "labelDetailsYear";
-            this.labelDetailsYear.Size = new System.Drawing.Size(0, 13);
-            this.labelDetailsYear.TabIndex = 78;
-            // 
-            // labelDetailsRating
-            // 
-            this.labelDetailsRating.AutoSize = true;
-            this.labelDetailsRating.Location = new System.Drawing.Point(409, 20);
-            this.labelDetailsRating.Name = "labelDetailsRating";
-            this.labelDetailsRating.Size = new System.Drawing.Size(0, 13);
-            this.labelDetailsRating.TabIndex = 79;
-            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 507);
+            this.ClientSize = new System.Drawing.Size(786, 534);
             this.ControlBox = false;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

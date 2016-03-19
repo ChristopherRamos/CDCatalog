@@ -20,19 +20,36 @@ namespace CDCatalog
 
         private void btnAddCD_Click(object sender, EventArgs e)
         {
+            int artId = Convert.ToInt32(comboBoxAddCDArtist.SelectedValue);
 
             var album = new Album
             {
-                ArtistId = Convert.ToInt32(comboBoxAddCDArtist.SelectedValue),
+                ArtistId = artId,
                 Title = textBoxAddCDTitle.Text,
                 Year = Convert.ToInt32(numericUpDownAddCDYear.Value),
             };
 
             using (var context = new CDCatalogContext())
             {
-                context.Database.Log = Console.WriteLine;
-                context.Albums.Add(album);
-                context.SaveChanges();
+                try
+                {
+                    //context.Database.Log = Console.WriteLine;
+
+                    if (context.Albums.Any(x => x.ArtistId == artId && x.Title == textBoxAddCDTitle.Text))
+                    {
+                        MessageBox.Show("Cannot add already existing album");
+                    }
+                    else
+                    {
+                        context.Albums.Add(album);
+                        context.SaveChanges();
+                    }  
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("There was a problem saving this album:" + ex.Message.ToString());
+                }
             }
 
             refreshComboBoxes();

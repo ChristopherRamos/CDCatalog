@@ -20,6 +20,8 @@ namespace CDCatalog
 
         private void btnAddSong_Click(object sender, EventArgs e)
         {
+           
+            int alId = Convert.ToInt32(comboBoxAddSongAlbum.SelectedValue);
             var song = new Song
             {
                 ArtistId = Convert.ToInt32(comboBoxAddSongArtist.SelectedValue),
@@ -30,14 +32,40 @@ namespace CDCatalog
                 TrackLength = Convert.ToInt32(numericUpDownAddSongTrackLength.Value),
             };
 
-            using (var context = new CDCatalogContext())
+             using (var context = new CDCatalogContext())
             {
-                context.Database.Log = Console.WriteLine;
-                context.Songs.Add(song);
-                context.SaveChanges();
-            }
+                try
+                {
+                    if (context.Songs.Any(x => x.AlbumId == alId && x.Title == textBoxAddSongTitle.Text))
+                    {
+                        MessageBox.Show("Cannot add duplicate songs on the same album ");
+                    }
+                    else
+                    {
+                        context.Songs.Add(song);
+                        context.SaveChanges();
+                    }
+                }
 
+                catch (Exception ex)
+                {
+                    MessageBox.Show("There was a problem saving this song:" + ex.Message.ToString());
+                }
+            }
         }
+
+
+
+        
+
+
+
+
+
+
+
+
+
 
         private void refreshComboBoxes()
         {
