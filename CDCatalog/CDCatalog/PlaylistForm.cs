@@ -19,46 +19,52 @@ namespace CDCatalog
 
         private void generatePlaylist(int maxplaylistLength)
         {
-
-            using (var context = new CDCatalogContext())
+            try
             {
-
-                var SongArtistAlbumList =
-                                     from ts in context.Songs
-                                     join n in context.Artists on ts.ArtistId equals n.ID
-                                     join a in context.Albums on ts.AlbumId equals a.Id
-                                     where ts.TrackLength <= maxplaylistLength
-                                     //changes index numbers (shuffles list)
-                                     orderby Guid.NewGuid()
-                                     select new { ts, n, a };
-
-                var playlistDetails = new List<Details>();
-
-                int totalTime = 0;
-
-                foreach (var item in SongArtistAlbumList)
+                using (var context = new CDCatalogContext())
                 {
-                    int songTrackLength = item.ts.TrackLength;
+                
+                    var SongArtistAlbumList =
+                                         from ts in context.Songs
+                                         join n in context.Artists on ts.ArtistId equals n.ID
+                                         join a in context.Albums on ts.AlbumId equals a.Id
+                                         where ts.TrackLength <= maxplaylistLength
+                                         //changes index numbers (shuffles list)
+                                         orderby Guid.NewGuid()
+                                         select new { ts, n, a };
 
-                    if (songTrackLength <= maxplaylistLength && (totalTime + songTrackLength) <= maxplaylistLength)
+                    var playlistDetails = new List<Details>();
+
+                    int totalTime = 0;
+
+                    foreach (var item in SongArtistAlbumList)
                     {
-                        playlistDetails.Add(new Details()
-                        {
-                            Title = item.ts.Title.ToString(),
-                            Artist = item.n.Name,
-                            AlbumTitle = item.a.Title,
-                            TrackLength = item.ts.TrackLength
-                        });
+                        int songTrackLength = item.ts.TrackLength;
 
-                        totalTime = totalTime + songTrackLength;
+                        if (songTrackLength <= maxplaylistLength && (totalTime + songTrackLength) <= maxplaylistLength)
+                        {
+                            playlistDetails.Add(new Details()
+                            {
+                                Title = item.ts.Title.ToString(),
+                                Artist = item.n.Name,
+                                AlbumTitle = item.a.Title,
+                                TrackLength = item.ts.TrackLength
+                            });
+
+                            totalTime = totalTime + songTrackLength;
+                        }
+
                     }
 
+                    dataGridViewPlaylist.DataSource = playlistDetails;
+                    dataGridViewPlaylist.Columns[0].Visible = false;
+                    dataGridViewPlaylist.Columns[4].Visible = false;
+                    dataGridViewPlaylist.Columns[5].Visible = false;
                 }
-
-                dataGridViewPlaylist.DataSource = playlistDetails;
-                dataGridViewPlaylist.Columns[0].Visible = false;
-                dataGridViewPlaylist.Columns[4].Visible = false;
-                dataGridViewPlaylist.Columns[5].Visible = false;
+            }
+            catch (Exception ex)
+            {
+              MessageBox.Show("There was a problem generating playlist:" + ex.Message.ToString());
             }
         }
 

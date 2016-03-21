@@ -20,6 +20,7 @@ namespace CDCatalog
 
         private void btnAddCD_Click(object sender, EventArgs e)
         {
+            //Upon clicking the Add Album button, create album object then using linq, save it to the database.
             int artId = Convert.ToInt32(comboBoxAddCDArtist.SelectedValue);
 
             var album = new Album
@@ -29,11 +30,10 @@ namespace CDCatalog
                 Year = Convert.ToInt32(numericUpDownAddCDYear.Value),
             };
 
-            using (var context = new CDCatalogContext())
+            try
             {
-                try
-                {
-                    //context.Database.Log = Console.WriteLine;
+                 using (var context = new CDCatalogContext())
+                 {
 
                     if (context.Albums.Any(x => x.ArtistId == artId && x.Title == textBoxAddCDTitle.Text))
                     {
@@ -45,51 +45,57 @@ namespace CDCatalog
                         context.SaveChanges();
                     }  
                 }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show("There was a problem saving this album:" + ex.Message.ToString());
-                }
             }
-
+            catch (Exception ex)
+            {
+                 MessageBox.Show("There was a problem saving this album:" + ex.Message.ToString());
+            }
+            
             refreshComboBoxes();
         }
 
         private void refreshComboBoxes()
         {
-            using (var context = new CDCatalogContext())
+            try
             {
-                var Artistlist = context.Artists.OrderBy(a => a.Name).ToList();
-                var Genrelist = context.Genres.OrderBy(g => g.Name).ToList();
-                var Songlist = context.Songs.OrderBy(s => s.Title).ToList();
-                var CDlist = context.Albums.OrderBy(c => c.Title).ToList();
-
-                var MergedSongCDlist = new List<CombinedSongsAlbums>();
-
-                foreach (var item in Songlist)
+                using (var context = new CDCatalogContext())
                 {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
+                    var Artistlist = context.Artists.OrderBy(a => a.Name).ToList();
+                    var Genrelist = context.Genres.OrderBy(g => g.Name).ToList();
+                    var Songlist = context.Songs.OrderBy(s => s.Title).ToList();
+                    var CDlist = context.Albums.OrderBy(c => c.Title).ToList();
+
+                    var MergedSongCDlist = new List<CombinedSongsAlbums>();
+
+                    foreach (var item in Songlist)
                     {
-                        Title = "Song - " + item.Title,
-                        ID = item.Id,
-                        AssetType = "Song"
-                    });
+                        MergedSongCDlist.Add(new CombinedSongsAlbums()
+                        {
+                            Title = "Song - " + item.Title,
+                            ID = item.Id,
+                            AssetType = "Song"
+                        });
 
-                }
+                    }
 
-                foreach (var item in CDlist)
-                {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
+                    foreach (var item in CDlist)
                     {
-                        Title = "CD - " + item.Title,
-                        ID = item.Id,
-                        AssetType = "Album"
-                    });
-                }
+                        MergedSongCDlist.Add(new CombinedSongsAlbums()
+                        {
+                            Title = "CD - " + item.Title,
+                            ID = item.Id,
+                            AssetType = "Album"
+                        });
+                    }
 
-                this.comboBoxAddCDArtist.DataSource = Artistlist;
-                this.comboBoxAddCDArtist.DisplayMember = "Name";
-                this.comboBoxAddCDArtist.ValueMember = "ID";
+                    this.comboBoxAddCDArtist.DataSource = Artistlist;
+                    this.comboBoxAddCDArtist.DisplayMember = "Name";
+                    this.comboBoxAddCDArtist.ValueMember = "ID";
+                }
+             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was a problem refreshing combo boxes:" + ex.Message.ToString());
             }
         }
     }

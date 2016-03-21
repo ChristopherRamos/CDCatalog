@@ -73,101 +73,110 @@ namespace CDCatalog
             if (assettype == "Song")
             {
                 labelDetailsInfo.Text = "Below are additional details of the song selected above:";
-
-                using (var context = new CDCatalogContext())
+                try
                 {
-
-                    var SongArtistGenreList =
-                                         from ts in context.Songs
-                                         join n in context.Artists on ts.ArtistId equals n.ID
-                                         join g in context.Genres on ts.GenreID equals g.ID
-                                         join a in context.Albums on ts.AlbumId equals a.Id
-                                         where ts.Id == id
-                                         select new { ts, n, g, a };
-
-                    var SongDetails = new List<Details>();
-
-                    foreach (var item in SongArtistGenreList)
+                    using (var context = new CDCatalogContext())
                     {
-                        SongDetails.Add(new Details()
+                        var SongArtistGenreList =
+                                             from ts in context.Songs
+                                             join n in context.Artists on ts.ArtistId equals n.ID
+                                             join g in context.Genres on ts.GenreID equals g.ID
+                                             join a in context.Albums on ts.AlbumId equals a.Id
+                                             where ts.Id == id
+                                             select new { ts, n, g, a };
+
+                        var SongDetails = new List<Details>();
+
+                        foreach (var item in SongArtistGenreList)
                         {
-                            AssetType = "Song",
-                            Title = item.ts.Title.ToString(),
-                            Artist = item.n.Name,
-                            AlbumTitle = item.a.Title,
-                            TrackNumber = Convert.ToInt32(item.ts.TrackNumber),
-                            Genre = item.g.Name,
-                            TrackLength = Convert.ToInt32(item.ts.TrackLength),
-                            Rating = Convert.ToInt32(item.ts.Rating)
-                        });
+                            SongDetails.Add(new Details()
+                            {
+                                AssetType = "Song",
+                                Title = item.ts.Title.ToString(),
+                                Artist = item.n.Name,
+                                AlbumTitle = item.a.Title,
+                                TrackNumber = Convert.ToInt32(item.ts.TrackNumber),
+                                Genre = item.g.Name,
+                                TrackLength = Convert.ToInt32(item.ts.TrackLength),
+                                Rating = Convert.ToInt32(item.ts.Rating)
+                            });
+                        }
+
+                        dataGridViewDetails.DataSource = SongDetails;
+                        dataGridViewDetails.Columns[0].Visible = false;
+                        dataGridViewDetails.Columns[7].Visible = false;
+                        dataGridViewDetails.ReadOnly = true;
+                        //remove highlighting in details
+                        dataGridViewDetails.ClearSelection();
+                        dataGridViewDetails.CurrentCell = null;
                     }
-
-                    dataGridViewDetails.DataSource = SongDetails;
-                    dataGridViewDetails.Columns[0].Visible = false;
-                    dataGridViewDetails.Columns[7].Visible = false;
-                    dataGridViewDetails.ReadOnly = true;
-                    //remove highlighting in details
-                    dataGridViewDetails.ClearSelection();
-                    dataGridViewDetails.CurrentCell = null;
                 }
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show("There was a problem showing Song details:" + ex.Message.ToString());
+                }
             }
             else if (assettype == "CD")
             {
-               
-                using (var context = new CDCatalogContext())
+                try
                 {
-                    //ta = title album, n = name
-                    var AlbumArtistList =
-                                         from ta in context.Albums
-                                         join n in context.Artists on ta.ArtistId equals n.ID
-                                         where ta.Id == id
-                                         select new { ta, n };
-                    //ts = title song
-                    var AlbumSongList =
-                                        from ts in context.Songs
-                                        join ta in context.Albums on ts.AlbumId equals ta.Id
-                                        where ta.Id == id
-                                        orderby ts.TrackNumber ascending
-                                        select new { ts, ta };
-
-                    var SongDetails = new List<Details>();
-
-                    foreach (var item in AlbumSongList)
+                    using (var context = new CDCatalogContext())
                     {
-                        SongDetails.Add(new Details()
+                        //ta = title album, n = name
+                        var AlbumArtistList =
+                                             from ta in context.Albums
+                                             join n in context.Artists on ta.ArtistId equals n.ID
+                                             where ta.Id == id
+                                             select new { ta, n };
+                        //ts = title song
+                        var AlbumSongList =
+                                            from ts in context.Songs
+                                            join ta in context.Albums on ts.AlbumId equals ta.Id
+                                            where ta.Id == id
+                                            orderby ts.TrackNumber ascending
+                                            select new { ts, ta };
+
+                        var SongDetails = new List<Details>();
+
+                        foreach (var item in AlbumSongList)
                         {
-                            Title = item.ts.Title.ToString(),
-                            TrackNumber = Convert.ToInt32(item.ts.TrackNumber),
-                            TrackLength = Convert.ToInt32(item.ts.TrackLength)
-                        });
+                            SongDetails.Add(new Details()
+                            {
+                                Title = item.ts.Title.ToString(),
+                                TrackNumber = Convert.ToInt32(item.ts.TrackNumber),
+                                TrackLength = Convert.ToInt32(item.ts.TrackLength)
+                            });
+                        }
+
+                        labelDetailsInfo.Text = "The following are additional details and list of songs on the album selected above:";
+
+                        foreach (var item in AlbumArtistList)
+                        {
+                            labelDetailsAlbumTitle.Text = "Album Title: " + item.ta.Title;
+                            labelDetailsArtist.Text = "Artist: " + item.n.Name;
+                            labelDetailsYear.Text = "Year: " + item.ta.Year.ToString();
+                            labelDetailsRating.Text = "Rating: " + item.ta.Rating.ToString();
+                        }
+
+
+                        dataGridViewDetails.DataSource = SongDetails;
+                        dataGridViewDetails.Columns[0].Visible = false;
+                        dataGridViewDetails.Columns[2].Visible = false;
+                        dataGridViewDetails.Columns[3].Visible = false;
+                        dataGridViewDetails.Columns[5].Visible = false;
+                        dataGridViewDetails.Columns[6].Visible = false;
+                        dataGridViewDetails.Columns[7].Visible = false;
+                        dataGridViewDetails.Columns[8].Visible = false;
+                        dataGridViewDetails.ReadOnly = true;
+                        //remove highlighting in details
+                        dataGridViewDetails.ClearSelection();
+                        dataGridViewDetails.CurrentCell = null;
                     }
-
-                    labelDetailsInfo.Text = "The following are additional details and list of songs on the album selected above:";
-                  
-                    foreach (var item in AlbumArtistList)
-                    {
-                        labelDetailsAlbumTitle.Text = "Album Title: " + item.ta.Title;
-                        labelDetailsArtist.Text = "Artist: " + item.n.Name;
-                        labelDetailsYear.Text = "Year: " + item.ta.Year.ToString();
-                        labelDetailsRating.Text = "Rating: " + item.ta.Rating.ToString();
-                    }
-
-
-                    dataGridViewDetails.DataSource = SongDetails;
-                    dataGridViewDetails.Columns[0].Visible = false;
-                    dataGridViewDetails.Columns[2].Visible = false;
-                    dataGridViewDetails.Columns[3].Visible = false;
-                    dataGridViewDetails.Columns[5].Visible = false;
-                    dataGridViewDetails.Columns[6].Visible = false;
-                    dataGridViewDetails.Columns[7].Visible = false;
-                    dataGridViewDetails.Columns[8].Visible = false;
-                    dataGridViewDetails.ReadOnly = true;
-                    //remove highlighting in details
-                    dataGridViewDetails.ClearSelection();
-                    dataGridViewDetails.CurrentCell = null;
                 }
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show("There was a problem showing Album details:" + ex.Message.ToString());
+                }
             }
         }
 

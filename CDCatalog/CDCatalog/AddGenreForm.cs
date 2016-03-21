@@ -19,29 +19,36 @@ namespace CDCatalog
 
         private int GetGenreId(string p)
         {
-            using (var context = new CDCatalogContext())
+            try
             {
-
-                var genreID = context.Genres
-                    .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
-
-                //First check to see if Genre already in database
-
-                if (genreID.Any())
+                using (var context = new CDCatalogContext())
                 {
-                    return genreID.FirstOrDefault().ID;
+
+                    var genreID = context.Genres
+                        .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
+
+                    //First check to see if Genre already in database
+
+                    if (genreID.Any())
+                    {
+                        return genreID.FirstOrDefault().ID;
+                    }
+                    else
+                    {
+                        // Genre is not in the database, Insert new genre and return ID
+                        InsertNewGenre(p);
+
+                        var genreID2 = context.Genres
+                        .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
+
+                        return genreID2.FirstOrDefault().ID;
+                    }
                 }
-                else
-                {
-                    // Genre is not in the database, Insert new genre and return ID
-                    InsertNewGenre(p);
-
-                    var genreID2 = context.Genres
-                    .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
-
-                    return genreID2.FirstOrDefault().ID;
-                }
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was a problem getting Genre Id:" + ex.Message.ToString());
+                return 0;
             }
         }
 
@@ -51,18 +58,23 @@ namespace CDCatalog
             {
                 Name = p
             };
-
-            using (var context = new CDCatalogContext())
+            try
+            { 
+                using (var context = new CDCatalogContext())
+                {
+                    context.Genres.Add(genre);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
             {
-                context.Genres.Add(genre);
-                context.SaveChanges();
+                MessageBox.Show("There was a problem inserting Genre in the database:" + ex.Message.ToString());
             }
         }
 
         private void buttonAddGenre_Click(object sender, EventArgs e)
         {
             GetGenreId(textBoxAddGenre.Text);
-            //refreshComboBoxes();
         }
     }
 }

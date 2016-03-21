@@ -102,7 +102,7 @@
             this.btnAddCD.Name = "btnAddCD";
             this.btnAddCD.Size = new System.Drawing.Size(75, 23);
             this.btnAddCD.TabIndex = 65;
-            this.btnAddCD.Text = "Add CD";
+            this.btnAddCD.Text = "Add Album";
             this.btnAddCD.UseVisualStyleBackColor = true;
             this.btnAddCD.Click += new System.EventHandler(this.btnAddCD_Click);
             // 

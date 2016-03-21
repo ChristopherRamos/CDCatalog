@@ -19,29 +19,35 @@ namespace CDCatalog
 
         private int GetArtistId(string p)
         {
-            using (var context = new CDCatalogContext())
+            try
             {
-
-                var artistid = context.Artists
-                    .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
-
-                //First check to see if Artist already in database
-
-                if (artistid.Any())
+                using (var context = new CDCatalogContext())
                 {
-                    return artistid.FirstOrDefault().ID;
+                    var artistid = context.Artists
+                        .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
+
+                    //First check to see if Artist already in database
+
+                    if (artistid.Any())
+                    {
+                        return artistid.FirstOrDefault().ID;
+                    }
+                    else
+                    {
+                        // Artist is not in the database, Insert new artist and return ID
+                        InsertNewArtist(p);
+
+                        var artistid2 = context.Artists
+                        .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
+
+                        return artistid2.FirstOrDefault().ID;
+                    }
                 }
-                else
-                {
-                    // Artist is not in the database, Insert new artist and return ID
-                    InsertNewArtist(p);
-
-                    var artistid2 = context.Artists
-                    .Where(a => a.Name.ToUpper() == p.ToString().ToUpper());
-
-                    return artistid2.FirstOrDefault().ID;
-                }
-
+            }
+            catch (Exception ex)
+            {
+                 MessageBox.Show("There was a problem getting the Artist ID:" + ex.Message.ToString());
+                 return 0;
             }
         }
 
@@ -52,10 +58,17 @@ namespace CDCatalog
                 Name = p
             };
 
-            using (var context = new CDCatalogContext())
+            try
             {
-                context.Artists.Add(artist);
-                context.SaveChanges();
+                using (var context = new CDCatalogContext())
+                {
+                    context.Artists.Add(artist);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was a problem inserting an Artist into the database:" + ex.Message.ToString());
             }
         }
 
@@ -63,6 +76,5 @@ namespace CDCatalog
         {
             GetArtistId(textBoxAddArtist.Text);
         }
-
     }
 }

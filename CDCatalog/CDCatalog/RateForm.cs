@@ -38,66 +38,78 @@ namespace CDCatalog
 
         private static void InsertRating(int i, string t, int r)
         {
-            using (var context = new CDCatalogContext())
+            try
             {
-                if (t == "Song")
+                using (var context = new CDCatalogContext())
                 {
-                    Song s = (from x in context.Songs
-                              where x.Id == i
-                              select x).FirstOrDefault();
-                    s.Rating = r;
-                    context.SaveChanges();
-                }
+                    if (t == "Song")
+                    {
+                        Song s = (from x in context.Songs
+                                  where x.Id == i
+                                  select x).FirstOrDefault();
+                        s.Rating = r;
+                        context.SaveChanges();
+                    }
 
-                else
-                {
-                    Album a = (from x in context.Albums
-                               where x.Id == i
-                               select x).FirstOrDefault();
-                    a.Rating = r;
-                    context.SaveChanges();
+                    else
+                    {
+                        Album a = (from x in context.Albums
+                                   where x.Id == i
+                                   select x).FirstOrDefault();
+                        a.Rating = r;
+                        context.SaveChanges();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+              MessageBox.Show("There was a problem inserting a Rating:" + ex.Message.ToString());
             }
         }
 
         private void refreshComboBoxes()
         {
-            using (var context = new CDCatalogContext())
+            try
             {
-                var Artistlist = context.Artists.OrderBy(a => a.Name).ToList();
-                var Genrelist = context.Genres.OrderBy(g => g.Name).ToList();
-                var Songlist = context.Songs.OrderBy(s => s.Title).ToList();
-                var CDlist = context.Albums.OrderBy(c => c.Title).ToList();
-
-                var MergedSongCDlist = new List<CombinedSongsAlbums>();
-
-                foreach (var item in Songlist)
+                using (var context = new CDCatalogContext())
                 {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
+                    var Artistlist = context.Artists.OrderBy(a => a.Name).ToList();
+                    var Genrelist = context.Genres.OrderBy(g => g.Name).ToList();
+                    var Songlist = context.Songs.OrderBy(s => s.Title).ToList();
+                    var CDlist = context.Albums.OrderBy(c => c.Title).ToList();
+
+                    var MergedSongCDlist = new List<CombinedSongsAlbums>();
+
+                    foreach (var item in Songlist)
                     {
-                        Title = "Song - " + item.Title,
-                        ID = item.Id,
-                        AssetType = "Song"
-                    });
+                        MergedSongCDlist.Add(new CombinedSongsAlbums()
+                        {
+                            Title = "Song - " + item.Title,
+                            ID = item.Id,
+                            AssetType = "Song"
+                        });
 
-                }
+                    }
 
-                foreach (var item in CDlist)
-                {
-                    MergedSongCDlist.Add(new CombinedSongsAlbums()
+                    foreach (var item in CDlist)
                     {
-                        Title = "CD - " + item.Title,
-                        ID = item.Id,
-                        AssetType = "Album"
-                    });
-                }
+                        MergedSongCDlist.Add(new CombinedSongsAlbums()
+                        {
+                            Title = "CD - " + item.Title,
+                            ID = item.Id,
+                            AssetType = "Album"
+                        });
+                    }
 
-                this.comboBoxRateSongorCD.DataSource = MergedSongCDlist;
-                this.comboBoxRateSongorCD.DisplayMember = "Title";
-                this.comboBoxRateSongorCD.ValueMember = "ID";
+                    this.comboBoxRateSongorCD.DataSource = MergedSongCDlist;
+                    this.comboBoxRateSongorCD.DisplayMember = "Title";
+                    this.comboBoxRateSongorCD.ValueMember = "ID";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was a problem refreshing the combo boxes:" + ex.Message.ToString());
             }
         }
-
-      
     }
 }
