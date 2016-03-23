@@ -49,6 +49,7 @@
             this.buttonAddGenre.TabIndex = 59;
             this.buttonAddGenre.Text = "Add Genre";
             this.buttonAddGenre.UseVisualStyleBackColor = true;
+            this.buttonAddGenre.Click += new System.EventHandler(this.buttonAddGenre_Click);
             // 
             // label2
             // 

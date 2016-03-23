@@ -37,6 +37,8 @@ namespace CDCatalog
 
                     int totalTime = 0;
 
+                    //If a song is less than the max playlist length and if added to the playlist will make 
+                    //the total playlist time less than or equal to the max playlist length, then add the song to the playlist.
                     foreach (var item in SongArtistAlbumList)
                     {
                         int songTrackLength = item.ts.TrackLength;
@@ -60,6 +62,8 @@ namespace CDCatalog
                     dataGridViewPlaylist.Columns[0].Visible = false;
                     dataGridViewPlaylist.Columns[4].Visible = false;
                     dataGridViewPlaylist.Columns[5].Visible = false;
+                    dataGridViewPlaylist.Columns[7].Visible = false;
+                    dataGridViewPlaylist.Columns[8].Visible = false;
                 }
             }
             catch (Exception ex)
