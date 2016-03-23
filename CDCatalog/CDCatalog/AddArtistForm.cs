@@ -51,6 +51,7 @@ namespace CDCatalog
             }
         }
 
+        //Method to insert Artist.  Takes parameter p to represent the name of the Artist to add.
         private static void InsertNewArtist(string p)
         {
             var artist = new Artist

@@ -52,7 +52,8 @@ namespace CDCatalog
                     MessageBox.Show("There was a problem adding/saving this song:" + ex.Message.ToString());
                 }
         }
-        
+
+        //This method refreshes the combo boxes so that they're always up-to-date, whenever a new albums, artists, or genres are added.
         private void refreshComboBoxes()
         {
             try
@@ -61,21 +62,21 @@ namespace CDCatalog
                 {
                     var Artistlist = context.Artists.OrderBy(a => a.Name).ToList();
                     var Genrelist = context.Genres.OrderBy(g => g.Name).ToList();
-                    var Songlist = context.Songs.OrderBy(s => s.Title).ToList();
+                    //var Songlist = context.Songs.OrderBy(s => s.Title).ToList();
                     var CDlist = context.Albums.OrderBy(c => c.Title).ToList();
 
                     var MergedSongCDlist = new List<CombinedSongsAlbums>();
 
-                    foreach (var item in Songlist)
-                    {
-                        MergedSongCDlist.Add(new CombinedSongsAlbums()
-                        {
-                            Title = "Song - " + item.Title,
-                            ID = item.Id,
-                            AssetType = "Song"
-                        });
+                    //foreach (var item in Songlist)
+                    //{
+                    //    MergedSongCDlist.Add(new CombinedSongsAlbums()
+                    //    {
+                    //        Title = "Song - " + item.Title,
+                    //        ID = item.Id,
+                    //        AssetType = "Song"
+                    //    });
 
-                    }
+                    //}
 
                     foreach (var item in CDlist)
                     {

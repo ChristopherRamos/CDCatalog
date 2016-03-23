@@ -52,6 +52,7 @@ namespace CDCatalog
             }
         }
 
+        //Method to insert Genre.  Takes parameter p to represent the name of the Genre to add.
         private static void InsertNewGenre(string p)
         {
             var genre = new Genre
